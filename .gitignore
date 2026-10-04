@@ -1,0 +1,7 @@
+# design explorations — kept locally, not published
+demos/
+
+.DS_Store
+.vscode/
+.claude/
+node_modules/

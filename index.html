@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Karl Daven Talib — Full-Stack Software Engineer</title>
+<meta name="description" content="Karl Daven Talib — full-stack software engineer focused on backend and systems architecture. Healthcare platforms, CRM and business systems with Laravel, Filament, Next.js and Supabase. Davao City, PH.">
+<link rel="canonical" href="https://kahariel.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f2f1ed">
+
+<!-- link previews (LinkedIn, Messenger, Slack, X…) -->
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Karl Daven Talib">
+<meta property="og:title" content="Karl Daven Talib — Full-Stack Software Engineer">
+<meta property="og:description" content="Backend & systems architecture. Healthcare platforms in production at 7 clinics, real-time clinic operations, CRM and mobile. Explore the portfolio map.">
+<meta property="og:url" content="https://kahariel.github.io/">
+<meta property="og:image" content="https://kahariel.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Karl Daven Talib — the name drawn in dots, with the role Full-Stack Software Engineer, Backend & Systems Architecture">
+<meta property="profile:first_name" content="Karl Daven">
+<meta property="profile:last_name" content="Talib">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Karl Daven Talib — Full-Stack Software Engineer">
+<meta name="twitter:description" content="Backend & systems architecture. Healthcare platforms, real-time clinic operations, CRM and mobile.">
+<meta name="twitter:image" content="https://kahariel.github.io/assets/og.png">
+
+<!-- structured data: who this is, for search engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Karl Daven P. Talib",
+  "jobTitle": "Full-Stack Software Engineer",
+  "description": "Full-stack software engineer focused on backend and systems architecture.",
+  "url": "https://kahariel.github.io/",
+  "email": "mailto:pioloulo123@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Davao City", "addressCountry": "PH" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Assumption College of Davao" },
+  "knowsAbout": ["Laravel", "PHP", "Filament", "Livewire", "Next.js", "React", "React Native", "Supabase", "MySQL", "PostgreSQL", "Multi-tenant architecture", "REST APIs", "Webhooks", "Linux", "Nginx"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="viewport">
+  <div id="world"></div>
+</div>
+
+<!-- HUD: things pinned to the screen, not the map -->
+<div id="coords" class="hud"></div>
+<nav id="compass" class="hud" aria-label="Jump to"></nav>
+<div id="help" class="hud">Drag to move · Scroll or pinch to zoom · Arrow keys · <kbd>0</kbd> Index</div>
+<canvas id="minimap" class="hud" width="200" height="146" aria-label="Minimap — click to jump"></canvas>
+<div id="actions" class="hud" aria-label="Quick actions">
+  <button id="tour-start" type="button">Tour</button>
+  <a id="resume-btn" href="#" download><span class="l">Résumé ↓</span><span class="s">CV ↓</span></a>
+  <button id="copy-email" type="button"><span class="l">Copy email</span><span class="s">Email</span></button>
+  <button id="plain-toggle" type="button"><span class="l">List view</span><span class="s">List</span></button>
+</div>
+
+<!-- Guided tour: the panel that narrates each stop -->
+<section id="tour" class="hud" hidden aria-live="polite">
+  <header><span class="tour-step"></span><button class="tour-close" type="button" aria-label="End tour">×</button></header>
+  <h2 class="tour-title"></h2>
+  <p class="tour-text"></p>
+  <div class="tour-bar"><i></i></div>
+  <footer>
+    <button class="tour-back" type="button">Back</button>
+    <button class="tour-pause" type="button">Pause</button>
+    <button class="tour-next" type="button">Next</button>
+  </footer>
+</section>
+
+<!-- First-visit prompt -->
+<aside id="welcome" class="hud" hidden>
+  <p>New here? A short tour shows the highlights in under a minute.</p>
+  <div><button class="welcome-start" type="button">Start tour</button><button class="welcome-skip" type="button">Explore on my own</button></div>
+</aside>
+
+<div id="toast" class="hud" role="status" aria-live="polite"></div>
+
+<!-- Linear, accessible version of the same content -->
+<article id="plain" hidden></article>
+
+<noscript>
+  <article style="max-width:720px;margin:0 auto;padding:48px 20px;font-family:system-ui,sans-serif;line-height:1.6;position:relative;z-index:200;background:#faf9f6">
+    <h1>Karl Daven P. Talib</h1>
+    <p>Full-Stack Software Engineer — Backend &amp; Systems Architecture · Davao City, Philippines</p>
+    <p><a href="mailto:pioloulo123@gmail.com">pioloulo123@gmail.com</a> · +63 916 154 2709</p>
+    <p>This portfolio is an interactive map and needs JavaScript. Selected work: Syncro (dental practice platform in production at 7 clinics),
+      One Shot Imaging (real-time clinic operations), SMB Solutions CRM, BloodSeek (mobile app) and BloodSeek Admin, KLNW (e-commerce), PiStamp (library attendance).</p>
+  </article>
+</noscript>
+
+<script src="js/content.js"></script>
+<script src="js/util.js"></script>
+<script src="js/plane.js"></script>
+<script src="js/erosion.js"></script>
+<script src="js/scraps.js"></script>
+<script src="js/signal.js"></script>
+<script src="js/zones.js"></script>
+<script src="js/plain.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/tour.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
