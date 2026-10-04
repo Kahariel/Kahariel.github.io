@@ -5,3 +5,8 @@ demos/
 .vscode/
 .claude/
 node_modules/
+
+# originals you drop in — only the web-optimised copies in assets/ are published
+project_screenshots/
+/CV.pdf
+/portrait.jpg
