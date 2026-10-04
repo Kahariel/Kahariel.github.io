@@ -17,7 +17,7 @@ window.CONTENT = {
   words: ['KARL', 'SYSTEMS', 'AUTOMATE', 'AI', 'TALIB'],
 
   photo: 'assets/portrait.webp',
-  bio: 'Full-stack engineer who designs systems and automates the work around them. I architect multi-tenant platforms, connect them through APIs, webhooks and workflow automation, and bring AI into both the products and the way I build them — healthcare, CRM and business systems on Laravel, Filament, Next.js and Supabase.',
+  bio: 'Full-stack engineer who designs systems and automates the work around them. I architect multi-tenant platforms, connect them through APIs, webhooks and workflow automation, and bring AI into both the products and the way I build them — across healthcare, CRM and business operations.',
 
   links: {
     github: 'https://github.com/Kahariel',
