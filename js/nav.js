@@ -44,6 +44,7 @@ window.Nav = function (zones, C) {
   let lastSet = '';
   function setHash(h) {
     lastSet = h;
+    U.track('section/' + (h.split('/')[0] || 'index'), { once: true });
     const url = h && h !== 'index' ? base() + '#' + h : base();
     if (url !== location.href) history.replaceState(null, '', url);
   }
@@ -80,16 +81,22 @@ window.Nav = function (zones, C) {
   });
 
   // ── quick actions ──
-  const copyEmail = async () => toast((await U.copy(C.email)) ? `Email copied — ${C.email}` : C.email);
+  const copyEmail = async () => { U.track('copy-email'); toast((await U.copy(C.email)) ? `Email copied — ${C.email}` : C.email); };
   document.getElementById('copy-email').onclick = copyEmail;
 
   const resume = document.getElementById('resume-btn');
-  if (C.links.resume) resume.href = C.links.resume;
+  if (C.links.resume) { resume.href = C.links.resume; resume.addEventListener('click', () => U.track('resume-download')); }
   else {
     resume.classList.add('missing');
     resume.title = 'Set links.resume in js/content.js';
     resume.onclick = e => { e.preventDefault(); toast('Résumé link not added yet — set links.resume in js/content.js'); };
   }
+
+  // outbound clicks on project links (live sites, source)
+  Plane.world.addEventListener('click', e => {
+    const a = e.target.closest('.proj .links a');
+    if (a) U.track('project-link/' + U.slug(a.closest('.proj').querySelector('h2').textContent));
+  });
 
   // copy buttons inside the map (delegated; stop them from starting a pan)
   Plane.world.addEventListener('pointerdown', e => { if (e.target.closest('.copy-btn')) e.stopPropagation(); });
@@ -98,7 +105,35 @@ window.Nav = function (zones, C) {
     if (!b) return;
     if (b.hasAttribute('data-copy-email')) return copyEmail();
     const link = base() + '#' + b.dataset.copyLink;
+    U.track('copy-link/' + b.dataset.copyLink);
     toast((await U.copy(link)) ? 'Link copied' : link);
+  });
+
+  // Keyboard: Tab into the map → glide to whatever got focus. The map container
+  // is overflow:hidden, and browsers try to scroll it to reveal focused elements;
+  // undo that, since the camera does the moving here.
+  const vp = document.getElementById('viewport');
+  Plane.world.addEventListener('focusin', e => {
+    vp.scrollTop = vp.scrollLeft = 0;
+    requestAnimationFrame(() => { vp.scrollTop = vp.scrollLeft = 0; });
+    const r = e.target.getBoundingClientRect();
+    const top = 60, bottom = innerHeight - 40;
+    const inView = r.top >= top && r.left >= 0 && r.bottom <= bottom && r.right <= innerWidth;
+    if (inView) return;
+    const card = e.target.closest('.proj');
+    // Same card/area already on screen (e.g. tabbing down a tall card): just nudge
+    // the camera enough to reveal the focused element instead of re-framing.
+    const host = (card || e.target.closest('.zone'));
+    const h = host && host.getBoundingClientRect();
+    if (h && h.bottom > top && h.top < bottom && h.right > 0 && h.left < innerWidth) {
+      const dy = r.bottom > bottom ? bottom - r.bottom - 20 : r.top < top ? top - r.top + 20 : 0;
+      const dx = r.right > innerWidth ? innerWidth - r.right - 20 : r.left < 0 ? -r.left + 20 : 0;
+      return Plane.glide({ s: Plane.cam.s, x: Plane.cam.x + dx, y: Plane.cam.y + dy }, 400);
+    }
+    if (card) return Plane.glide(cardCamera(card, zones.projects), 600);
+    const zoneEl = e.target.closest('.zone');
+    const zone = zoneEl && Object.values(zones).find(z => z.el === zoneEl);
+    if (zone) Plane.glide(Plane.fitZone(zone), 600);
   });
 
   // compass buttons update the address bar too

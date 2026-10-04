@@ -8,6 +8,7 @@ window.Signal = function (zone, C) {
   const STILL = U.reducedMotion;
   let dirty = true;
   const { cv, ctx } = U.zoneCanvas(zone, { onResize: () => { dirty = true; } });
+  cv.setAttribute('aria-hidden', 'true');
 
   // ── build the graph from content ──
   const nodes = [], edges = [], byKey = {};

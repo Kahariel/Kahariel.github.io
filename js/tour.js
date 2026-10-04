@@ -48,6 +48,7 @@ window.Tour = function (C, nav) {
 
   function start() {
     if (!steps.length) return;
+    U.track('tour-start');
     welcome.hidden = true;
     document.body.classList.remove('welcoming');
     remember();
@@ -58,6 +59,7 @@ window.Tour = function (C, nav) {
     show(0);
   }
   function end() {
+    if (!panel.hidden) U.track(i === steps.length - 1 ? 'tour-finished' : `tour-left-at-${i + 1}`);
     clearTimeout(timer);
     if (anim) anim.cancel();
     playing = false;

@@ -16,12 +16,14 @@
   Object.entries(LAYOUT).forEach(([id, z]) => {
     const el = U.el('section', 'zone z-' + id);
     el.id = id;
+    el.setAttribute('aria-label', z.nav === 'Index' ? 'Introduction' : z.nav);
     Object.assign(el.style, { left: z.x + 'px', top: z.y + 'px', width: z.w + 'px', height: z.h + 'px' });
     Plane.world.appendChild(el);
     zones[id] = { id, el, ...z };
     Plane.addZone(zones[id]);
     if (z.label) {
       const lab = U.el('div', 'zone-label', `<b>${z.n}</b><span>${U.esc(z.nav)}</span>${U.esc(z.label)}`);
+      lab.setAttribute('aria-hidden', 'true');
       Object.assign(lab.style, { left: z.x + 'px', top: z.y - 48 + 'px' });
       Plane.world.appendChild(lab);
     }
@@ -32,6 +34,12 @@
   Scraps(zones.scraps, C);
   Signal(zones.signal, C);
   Plain(C);
+
+  // every area gets a section heading for screen readers (h1 name → h2 section → h3 items)
+  Object.values(zones).forEach(z => {
+    if (z.id === 'erosion' || z.el.querySelector(':scope > h2, :scope > .big > h2')) return;
+    z.el.prepend(U.el('h2', 'sr-only', U.esc(z.nav === 'Work' ? 'Selected work' : z.nav)));
+  });
 
   // Project cards size themselves; grow the Work zone (and the world) to fit them.
   function fitProjects() {
@@ -53,13 +61,14 @@
   ];
   decor.forEach(d => {
     const el = U.el('div', 'decor note', U.esc(d.note));
+    el.setAttribute('aria-hidden', 'true');
     Object.assign(el.style, { left: d.x + 'px', top: d.y + 'px' });
     Plane.world.appendChild(el);
   });
   // thin leader lines: index → each zone
   const leaders = [[2100, 1500, 1950, 1350], [3900, 1500, 3950, 1450], [2100, 2100, 1850, 2100], [3000, 2500, 3000, 2850], [3900, 2500, 4400, 2850]];
   Plane.world.insertAdjacentHTML('beforeend',
-    `<svg class="decor" style="left:0;top:0" width="${Plane.WW}" height="${Plane.WH}">${leaders.map(([a, b, c, d]) =>
+    `<svg class="decor" aria-hidden="true" style="left:0;top:0" width="${Plane.WW}" height="${Plane.WH}">${leaders.map(([a, b, c, d]) =>
       `<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" stroke="#141519" stroke-opacity=".35" stroke-width="1.5"/><circle cx="${c}" cy="${d}" r="5" fill="#d4471f"/>`).join('')}</svg>`);
 
   // ── compass: free-floating jump buttons ──
@@ -82,7 +91,11 @@
   });
   Plane.onChange(() => {
     const c = Plane.center();
-    Object.values(zones).forEach(z => z.btn.classList.toggle('here', c.x > z.x && c.x < z.x + z.w && c.y > z.y && c.y < z.y + z.h));
+    Object.values(zones).forEach(z => {
+      const here = c.x > z.x && c.x < z.x + z.w && c.y > z.y && c.y < z.y + z.h;
+      z.btn.classList.toggle('here', here);
+      if (here) z.btn.setAttribute('aria-current', 'location'); else z.btn.removeAttribute('aria-current');
+    });
   });
 
   Plane.fitZone = fitZone;

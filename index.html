@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Karl Daven Talib — Full-Stack Software Engineer</title>
 <meta name="description" content="Karl Daven Talib — full-stack software engineer focused on backend and systems architecture. Healthcare platforms, CRM and business systems with Laravel, Filament, Next.js and Supabase. Davao City, PH.">
 <link rel="canonical" href="https://kahariel.github.io/">
@@ -41,31 +41,35 @@
   "knowsAbout": ["Laravel", "PHP", "Filament", "Livewire", "Next.js", "React", "React Native", "Supabase", "MySQL", "PostgreSQL", "Multi-tenant architecture", "REST APIs", "Webhooks", "Linux", "Nginx"]
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- fonts are self-hosted; preload the three the first screen needs (particle name, tagline, UI) -->
+<link rel="preload" href="assets/fonts/inter-tight-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-serif-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div id="viewport">
+<a class="skip-link" href="#plain">Skip to the list view</a>
+
+<main id="viewport" aria-label="Portfolio map — drag to move, or use Tab to step through the content">
   <div id="world"></div>
-</div>
+</main>
 
 <!-- HUD: things pinned to the screen, not the map -->
-<div id="coords" class="hud"></div>
+<div id="coords" class="hud" aria-hidden="true"></div>
 <nav id="compass" class="hud" aria-label="Jump to"></nav>
-<div id="help" class="hud">Drag to move · Scroll or pinch to zoom · Arrow keys · <kbd>0</kbd> Index</div>
-<canvas id="minimap" class="hud" width="200" height="146" aria-label="Minimap — click to jump"></canvas>
-<div id="actions" class="hud" aria-label="Quick actions">
+<div id="help" class="hud" aria-hidden="true">Drag to move · Scroll or pinch to zoom · Arrow keys · <kbd>0</kbd> Index</div>
+<canvas id="minimap" class="hud" width="200" height="146" aria-hidden="true"></canvas>
+<nav id="actions" class="hud" aria-label="Quick actions">
   <button id="tour-start" type="button">Tour</button>
   <a id="resume-btn" href="#" download><span class="l">Résumé ↓</span><span class="s">CV ↓</span></a>
   <button id="copy-email" type="button"><span class="l">Copy email</span><span class="s">Email</span></button>
   <button id="plain-toggle" type="button"><span class="l">List view</span><span class="s">List</span></button>
-</div>
+</nav>
 
 <!-- Guided tour: the panel that narrates each stop -->
-<section id="tour" class="hud" hidden aria-live="polite">
+<section id="tour" class="hud" hidden aria-live="polite" aria-label="Guided tour">
   <header><span class="tour-step"></span><button class="tour-close" type="button" aria-label="End tour">×</button></header>
   <h2 class="tour-title"></h2>
   <p class="tour-text"></p>
@@ -78,7 +82,7 @@
 </section>
 
 <!-- First-visit prompt -->
-<aside id="welcome" class="hud" hidden>
+<aside id="welcome" class="hud" hidden aria-label="Tour invitation">
   <p>New here? A short tour shows the highlights in under a minute.</p>
   <div><button class="welcome-start" type="button">Start tour</button><button class="welcome-skip" type="button">Explore on my own</button></div>
 </aside>
@@ -86,7 +90,7 @@
 <div id="toast" class="hud" role="status" aria-live="polite"></div>
 
 <!-- Linear, accessible version of the same content -->
-<article id="plain" hidden></article>
+<section id="plain" hidden aria-label="List view" tabindex="-1"></section>
 
 <noscript>
   <article style="max-width:720px;margin:0 auto;padding:48px 20px;font-family:system-ui,sans-serif;line-height:1.6;position:relative;z-index:200;background:#faf9f6">
@@ -100,6 +104,7 @@
 
 <script src="js/content.js"></script>
 <script src="js/util.js"></script>
+<script src="js/analytics.js"></script>
 <script src="js/plane.js"></script>
 <script src="js/erosion.js"></script>
 <script src="js/scraps.js"></script>

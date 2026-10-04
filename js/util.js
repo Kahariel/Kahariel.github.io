@@ -65,6 +65,8 @@ window.U = {
     return ok;
   },
 
+  track: () => {}, // replaced by js/analytics.js
+
   clamp: (v, a, b) => Math.max(a, Math.min(b, v)),
   rand: (a, b) => a + Math.random() * (b - a),
   reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches,

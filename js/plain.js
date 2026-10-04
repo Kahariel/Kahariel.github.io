@@ -42,7 +42,10 @@ window.Plain = function (C) {
     root.hidden = !v;
     toggle.hidden = v;
     history.replaceState(null, '', v ? '#plain' : location.pathname);
+    (v ? root : toggle).focus();
+    if (v) U.track('list-view', { once: true });
   };
+  addEventListener('hashchange', () => { if (location.hash === '#plain') open(true); });
   toggle.onclick = () => open(true);
   root.querySelector('.close').onclick = () => open(false);
   addEventListener('keydown', ev => { if (ev.key === 'Escape' && !root.hidden) open(false); });

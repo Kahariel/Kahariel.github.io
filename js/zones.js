@@ -2,7 +2,8 @@
 window.Zones = {
   erosion(z, C) {
     z.el.innerHTML = `
-      <div class="hint eyebrow">Select the name to cycle · Move away and it dissolves</div>
+      <h1 class="sr-only">${U.esc(C.name.full)}</h1>
+      <div class="hint eyebrow" aria-hidden="true">Select the name to cycle · Move away and it dissolves</div>
       <div class="tagline">${U.esc(C.role)} <i>—</i> ${U.esc(C.focus)}<small>${U.esc(C.location)}</small></div>`;
   },
 
@@ -10,8 +11,11 @@ window.Zones = {
     z.el.innerHTML = `
       <div class="big"><h2>Stack</h2>
         <div class="eyebrow">${Object.values(C.skills).flat().length} tools · ${Object.keys(C.skills).length} domains · ${C.projects.length} projects</div></div>
-      <div class="log"></div>
-      <div class="shint"><i>●</i> project &nbsp; ○ domain &nbsp; · tool<br>Select a node to inspect it</div>`;
+      <div class="sr-only">
+        ${Object.entries(C.skills).map(([cat, list]) => `<h3>${U.esc(cat)}</h3><ul>${list.map(t => `<li>${U.esc(t)}</li>`).join('')}</ul>`).join('')}
+      </div>
+      <div class="log" aria-hidden="true"></div>
+      <div class="shint" aria-hidden="true"><i>●</i> project &nbsp; ○ domain &nbsp; · tool<br>Select a node to inspect it</div>`;
   },
 
   about(z, C) {
@@ -44,7 +48,7 @@ window.Zones = {
       return `
         <article class="proj${dark ? ' dark' : ''}" id="project-${U.slug(p.name)}">
           <div class="shot">${U.img(p.image, p.name + ' screenshot', p.name + ' — screenshot (demo data)')}</div>
-          <div class="head"><span class="eyebrow">${U.esc(p.kicker)}</span><span class="eyebrow">P/${String(i + 1).padStart(2, '0')}<button class="copy-btn" type="button" data-copy-link="work/${U.slug(p.name)}">Copy link</button></span></div>
+          <div class="head"><span class="eyebrow">${U.esc(p.kicker)}</span><span class="eyebrow">P/${String(i + 1).padStart(2, '0')}<button class="copy-btn" type="button" data-copy-link="work/${U.slug(p.name)}" aria-label="Copy link to ${U.esc(p.name)}">Copy link</button></span></div>
           <h2>${U.esc(p.name)}</h2>
           <div class="meta">${U.esc(p.year)} · ${U.esc(p.role)}${p.status ? `<span class="status">${U.esc(p.status)}</span>` : ''}</div>
           <p>${U.esc(p.summary)}</p>
@@ -77,7 +81,7 @@ window.Zones = {
     z.el.innerHTML = `
       <div class="say" style="left:80px;top:90px">Let's build<br>something<i>.</i></div>
       <div class="lines" style="left:86px;top:480px">
-        <div class="eyebrow">Email</div><a href="mailto:${U.esc(C.email)}">${U.esc(C.email)}</a><button class="copy-btn" type="button" data-copy-email>Copy</button>
+        <div class="eyebrow">Email</div><a href="mailto:${U.esc(C.email)}">${U.esc(C.email)}</a><button class="copy-btn" type="button" data-copy-email aria-label="Copy email address">Copy</button>
         <div class="eyebrow" style="margin-top:16px">Phone</div><a href="tel:${U.esc(C.phone.replace(/\s/g, ''))}">${U.esc(C.phone)}</a>
       </div>
       <div class="socials" style="left:86px;top:880px">

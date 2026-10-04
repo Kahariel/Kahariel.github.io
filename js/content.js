@@ -221,6 +221,15 @@ window.CONTENT = {
   ],
 
   /*
+   * Analytics — off until set. Both options are privacy-friendly (no cookies, no banner needed):
+   *   GoatCounter (free for personal sites): sign up at goatcounter.com → analytics: { goatcounter: 'your-code' }
+   *   Plausible (paid):                                                  analytics: { plausible: 'kahariel.github.io' }
+   * Besides page views it records: which sections visitors reach, tour starts, email / link copies,
+   * résumé downloads and clicks on live project links.
+   */
+  analytics: null,
+
+  /*
    * Guided tour. `at` is a section (index, experience, stack, about, work, contact)
    * or a project as work/<slug> — the slug is the project name in lowercase-with-dashes.
    * The same values work as shareable links: yoursite.com/#work/syncro

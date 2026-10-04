@@ -22,6 +22,7 @@ window.Erosion = function (zone, words) {
   // for thousands of dots). The buffer is rebuilt whenever the canvas is resized.
   let img = null, px32 = null;
   const { cv, ctx } = U.zoneCanvas(zone, { snap: GAP, onResize: () => { img = null; dirty = true; } });
+  cv.setAttribute('aria-hidden', 'true');
   const INK = 0xff191514, ACCENT = 0xff1f47d4; // #141519 / #d4471f as little-endian ABGR
 
   function sample(word) {

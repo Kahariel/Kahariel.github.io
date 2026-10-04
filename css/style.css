@@ -5,7 +5,9 @@
   --muted: #6b6d72;
   --line: rgba(20, 21, 25, .16);
   --panel: #ffffff;
-  --accent: #d4471f;
+  --accent: #d4471f;            /* brand orange: dots, lines, fills, large type */
+  --accent-text: #bf401c;       /* orange for small text on light backgrounds (≥4.5:1) */
+  --accent-text-dark: #df5027;  /* orange for small text on dark backgrounds (≥4.5:1) */
   --void: #0e0f11;
   --void-line: #23252a;
   --void-text: #c9cbcf;
@@ -27,9 +29,22 @@ a { color: inherit; }
 button { font: inherit; color: inherit; }
 kbd { font: inherit; border: 1px solid currentColor; padding: 0 4px; border-radius: 2px; }
 
+/* accessibility helpers */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip-link {
+  position: fixed; left: 16px; top: -60px; z-index: 300; background: var(--ink); color: var(--ground); padding: 10px 16px;
+  font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+}
+.skip-link:focus { top: 12px; }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
+.z-signal :focus-visible, .z-contact :focus-visible, .proj.dark :focus-visible, .card.dark :focus-visible, .payload :focus-visible,
+#tour-start:focus-visible, #tour .tour-next:focus-visible, #welcome .welcome-start:focus-visible { outline-color: var(--accent-text-dark); }
+#plain:focus { outline: none; }
+
 /* shared bits */
 .eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-.accent { color: var(--accent); }
+.accent { color: var(--accent-text); }
 
 /* ───────── the plane ───────── */
 #viewport { position: fixed; inset: 0; overflow: hidden; cursor: grab; touch-action: none; user-select: none; }
@@ -46,7 +61,7 @@ kbd { font: inherit; border: 1px solid currentColor; padding: 0 4px; border-radi
   position: absolute; display: flex; align-items: baseline; gap: 18px; white-space: nowrap; pointer-events: none;
   font-family: var(--mono); font-size: 20px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
 }
-.zone-label b { color: var(--accent); font-weight: 400; }
+.zone-label b { color: var(--accent-text); font-weight: 400; }
 .zone-label span { color: var(--ink); }
 .decor { position: absolute; pointer-events: none; }
 .decor.note { font-family: var(--mono); font-size: 18px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
@@ -55,7 +70,7 @@ svg.decor { overflow: visible; }
 /* placeholder for anything not filled in content.js */
 .ph {
   display: inline-flex; align-items: center; justify-content: center; text-align: center;
-  border: 1px dashed currentColor; opacity: .5; padding: 2px 8px; font-family: var(--mono); font-size: .8em; letter-spacing: .06em;
+  border: 1px dashed currentColor; opacity: .8; padding: 2px 8px; font-family: var(--mono); font-size: .8em; letter-spacing: .06em;
   text-transform: uppercase; text-decoration: none;
 }
 .ph-box { display: flex; width: 100%; height: 100%; padding: 12px; }
@@ -94,7 +109,7 @@ svg.decor { overflow: visible; }
 }
 #tour[hidden], #welcome[hidden] { display: none; }
 #tour header { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px 0; font-size: 11px; letter-spacing: .12em; color: var(--muted); }
-#tour .tour-step b { color: var(--accent); font-weight: 400; }
+#tour .tour-step b { color: var(--accent-text); font-weight: 400; }
 #tour .tour-close { background: none; border: 0; font-size: 18px; line-height: 1; cursor: pointer; color: var(--muted); }
 #tour .tour-close:hover { color: var(--ink); }
 #tour h2 { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1.05; padding: 6px 14px 0; }
@@ -135,7 +150,8 @@ body.touring #help, body.welcoming #help { display: none; }
   text-transform: uppercase; cursor: pointer; transition: background .15s, color .15s;
 }
 #compass button:last-child { border-right: 0; }
-#compass button i { font-style: normal; color: var(--accent); margin-right: 6px; }
+#compass button i { font-style: normal; color: var(--accent-text); margin-right: 6px; }
+#compass button.here i { color: var(--accent-text-dark); }
 #compass button:hover { background: rgba(20, 21, 25, .06); }
 #compass button.here { background: var(--ink); color: var(--ground); }
 
@@ -161,7 +177,8 @@ body.touring #help, body.welcoming #help { display: none; }
 .card .role { font-weight: 600; margin: 8px 0 16px; }
 .card ul { list-style: none; border-top: 1px solid var(--line); }
 .card li { padding: 9px 0 9px 22px; position: relative; border-bottom: 1px solid var(--line); color: #34363b; }
-.card li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+.card li::before { content: "—"; position: absolute; left: 0; color: var(--accent-text); }
+.card.dark li::before { color: var(--accent-text-dark); }
 .card.dark { background: var(--ink); color: var(--ground); border-color: var(--ink); }
 .card.dark li { color: #c9cbcf; border-color: rgba(255,255,255,.14); }
 .card.dark ul { border-color: rgba(255,255,255,.14); }
@@ -181,23 +198,23 @@ body.touring #help, body.welcoming #help { display: none; }
 .z-signal .big { position: absolute; left: 44px; top: 40px; pointer-events: none; }
 .z-signal .big h2 { font-family: var(--serif); font-weight: 400; font-size: 88px; line-height: .95; color: #f2f1ed; }
 .z-signal .big .eyebrow { color: #7d8086; margin-top: 14px; }
-.z-signal .log { position: absolute; left: 44px; bottom: 34px; font-family: var(--mono); font-size: 13px; line-height: 1.7; color: #5d6066; pointer-events: none; width: 560px; }
+.z-signal .log { position: absolute; left: 44px; bottom: 34px; font-family: var(--mono); font-size: 13px; line-height: 1.7; color: #7d8086; pointer-events: none; width: 560px; }
 .z-signal .log span { color: #9a9da3; }
-.z-signal .shint { position: absolute; right: 44px; bottom: 34px; font-family: var(--mono); font-size: 13px; line-height: 1.7; color: #5d6066; pointer-events: none; text-align: right; }
-.z-signal .shint i { font-style: normal; color: var(--accent); }
+.z-signal .shint { position: absolute; right: 44px; bottom: 34px; font-family: var(--mono); font-size: 13px; line-height: 1.7; color: #7d8086; pointer-events: none; text-align: right; }
+.z-signal .shint i { font-style: normal; color: var(--accent-text-dark); }
 .payload {
   position: absolute; width: 440px; background: #16171a; border: 1px solid #3a3d44; font-family: var(--mono); font-size: 14px; line-height: 1.65;
   box-shadow: 0 30px 60px -20px rgba(0,0,0,.6); animation: unfurl .25s ease-out; z-index: 5;
 }
 @keyframes unfurl { from { opacity: 0; } to { opacity: 1; } }
 .payload header { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-bottom: 1px solid #3a3d44; cursor: move; color: #f2f1ed; }
-.payload header span::before { content: "● "; color: var(--accent); }
+.payload header span::before { content: "● "; color: var(--accent-text-dark); }
 .payload header button { background: none; border: 0; cursor: pointer; font-size: 18px; line-height: 1; color: #8b8e94; }
 .payload header button:hover { color: #fff; }
 .payload pre { padding: 14px 16px; white-space: pre-wrap; font-family: inherit; color: #c9cbcf; }
 .payload .k { color: #8b8e94; }
 .payload .s { color: #f2f1ed; }
-.payload a { color: var(--accent); }
+.payload a { color: var(--accent-text-dark); }
 
 /* ───────── 03 About ───────── */
 .z-about .photo { position: absolute; width: 380px; }
@@ -222,7 +239,8 @@ body.touring #help, body.welcoming #help { display: none; }
 .proj p { color: #34363b; }
 .proj ul { list-style: none; margin-top: 16px; border-top: 1px solid var(--line); }
 .proj li { padding: 9px 0 9px 22px; position: relative; border-bottom: 1px solid var(--line); font-size: 16px; color: #34363b; }
-.proj li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+.proj li::before { content: "—"; position: absolute; left: 0; color: var(--accent-text); }
+.proj.dark li::before { color: var(--accent-text-dark); }
 .proj .stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
 .proj .stack span { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; padding: 4px 9px; background: #efede8; }
 .proj .links { display: flex; gap: 10px; margin-top: 22px; font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
@@ -256,7 +274,7 @@ body.touring #help, body.welcoming #help { display: none; }
 .z-contact .say i { color: var(--accent); }
 .z-contact .lines { position: absolute; font-size: 30px; line-height: 1.8; }
 .z-contact .lines a { text-decoration: none; border-bottom: 1px solid rgba(242,241,237,.35); }
-.z-contact .lines a:hover { border-color: var(--accent); color: var(--accent); }
+.z-contact .lines a:hover { border-color: var(--accent-text-dark); color: var(--accent-text-dark); }
 .z-contact .lines .eyebrow { color: #8b8e94; }
 .z-contact .socials { position: absolute; display: flex; font-family: var(--mono); font-size: 15px; letter-spacing: .08em; text-transform: uppercase; }
 .z-contact .socials > * { border: 1px solid rgba(242,241,237,.5); padding: 12px 18px; text-decoration: none; margin-right: -1px; opacity: 1; }
