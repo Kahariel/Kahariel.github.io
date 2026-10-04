@@ -41,9 +41,8 @@
   "knowsAbout": ["Laravel", "PHP", "Filament", "Livewire", "Next.js", "React", "React Native", "Supabase", "MySQL", "PostgreSQL", "Multi-tenant architecture", "REST APIs", "Webhooks", "Linux", "Nginx"]
 }
 </script>
-<!-- fonts are self-hosted; preload only the particle name's font (measured: best balance of
-     first paint vs. fonts-ready on slow 4G — preloading all three delayed first paint) -->
-<link rel="preload" href="assets/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- fonts are self-hosted and deliberately NOT preloaded: on slow 4G, preloads delayed first
+     paint by ~190 ms; without them first paint matches Google Fonts and full load is faster -->
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/style.css">
 </head>

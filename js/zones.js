@@ -47,7 +47,7 @@ window.Zones = {
       ].join('');
       return `
         <article class="proj${dark ? ' dark' : ''}" id="project-${U.slug(p.name)}">
-          <div class="shot">${U.img(p.image, p.name + ' screenshot', p.name + ' — screenshot (demo data)')}</div>
+          <div class="shot${p.imageFit === 'contain' ? ' contain' : ''}">${U.img(p.image, p.name + ' screenshot', p.name + ' — screenshot (demo data)')}</div>
           <div class="head"><span class="eyebrow">${U.esc(p.kicker)}</span><span class="eyebrow">P/${String(i + 1).padStart(2, '0')}<button class="copy-btn" type="button" data-copy-link="work/${U.slug(p.name)}" aria-label="Copy link to ${U.esc(p.name)}">Copy link</button></span></div>
           <h2>${U.esc(p.name)}</h2>
           <div class="meta">${U.esc(p.year)} · ${U.esc(p.role)}${p.status ? `<span class="status">${U.esc(p.status)}</span>` : ''}</div>

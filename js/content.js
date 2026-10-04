@@ -152,7 +152,8 @@ window.CONTENT = {
       ],
       facts: [['Platforms', 'Android · iOS'], ['Screens', '20+']],
       stack: ['React Native', 'Expo', 'TypeScript', 'Supabase', 'Mapbox', 'Firebase'],
-      image: null,
+      image: 'assets/projects/bloodseek.webp',
+      imageFit: 'contain', // phone screens: show whole, don't crop
       live: null,
       repo: null,
       private: true,
