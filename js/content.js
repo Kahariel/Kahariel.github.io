@@ -8,16 +8,16 @@
 window.CONTENT = {
   name: { first: 'Karl', middle: 'Daven', last: 'Talib', full: 'Karl Daven P. Talib' },
   role: 'Full-Stack Software Engineer',
-  focus: 'Backend & Systems Architecture',
+  focus: 'AI, Automation & System Design',
   location: 'Davao City, Philippines',
   email: 'pioloulo123@gmail.com',
   phone: '+63 916 154 2709',
 
   // words the particle name cycles through when clicked
-  words: ['KARL', 'BACKEND', 'SYSTEMS', 'TALIB'],
+  words: ['KARL', 'SYSTEMS', 'AUTOMATE', 'AI', 'TALIB'],
 
   photo: 'assets/portrait.webp',
-  bio: 'Full-stack engineer who mostly lives in the backend. I architect multi-tenant platforms, wire up APIs and webhooks, design relational data, and keep the servers running — healthcare, CRM, and business systems built on Laravel, Filament, Livewire, Next.js, React and Supabase.',
+  bio: 'Full-stack engineer who designs systems and automates the work around them. I architect multi-tenant platforms, connect them through APIs, webhooks and workflow automation, and bring AI into both the products and the way I build them — healthcare, CRM and business systems on Laravel, Filament, Next.js and Supabase.',
 
   links: {
     github: 'https://github.com/Kahariel',
@@ -46,6 +46,7 @@ window.CONTENT = {
         'Led architecture of healthcare platforms: dental practice management & diagnostic imaging',
         'Tenant-aware data access, auth, RBAC, REST APIs, webhooks, automated workflows',
         'Server-driven interfaces with Laravel, Livewire and Filament',
+        'Prototyped an AI voice receptionist that reads and manages appointments through the platform API',
         'Ran VPS infrastructure on aaPanel — deploys, databases, domains, SSL',
       ],
     },
@@ -72,13 +73,15 @@ window.CONTENT = {
   projects: [
     {
       name: 'Syncro',
-      kicker: 'Dental practice management · EHR',
+      kicker: 'Dental practice platform · EHR · AI',
       year: '2025 — now',
       role: 'Co-lead engineer',
       status: 'In production at 7 dental clinics',
-      summary: 'Web-based clinic management system for single and multi-branch dental practices — patient records, appointments, prescriptions, lab reports, billing, insurance, and SMS/email campaigns — shipped to seven clinics from one codebase.',
+      summary: 'Web-based clinic management system for single and multi-branch dental practices — patient records, appointments, prescriptions, lab reports, billing, insurance, and SMS/email campaigns — shipped to seven clinics from one codebase, with AI booking live and an AI voice receptionist in development.',
       highlights: [
-        'Branch-per-client delivery: a GitHub Actions workflow merges main into every clinic\'s branch, with a dry-run mode that checks for conflicts before pushing',
+        'Automated multi-client delivery: a GitHub Actions workflow merges main into every clinic\'s branch, with a dry-run mode that checks for conflicts before pushing',
+        'AI voice receptionist, a prototype I built: a LiveKit voice agent with Deepgram speech-to-text tuned on dental vocabulary and an OpenAI model that calls the platform API as tools to look up and manage appointments',
+        'Dialogflow booking chatbot on the clinic site — doctor lists, open slots, booking and cancellation through a Laravel webhook',
         'Four-tier subscription system (Freemium → Premium): a SubscriptionService and middleware gate features and enforce user, patient and appointment limits',
         'Company-scoped data access — middleware binds each request to a company and blocks route-model access across companies',
         'SmartChart / SmartNote: interactive tooth charting with a diagnosis-aware treatment picker and a draft → finalize workflow with permission enforcement',
@@ -87,7 +90,7 @@ window.CONTENT = {
         'Queued SMS (Twilio, Plivo) and email campaign jobs; Excel bulk import for patients, medicines and diagnoses',
       ],
       facts: [['Clinics', '7'], ['Migrations', '134'], ['Models', '60+']],
-      stack: ['Laravel', 'PHP', 'MySQL', 'Spatie Permission', 'Queues', 'DomPDF', 'Twilio', 'GitHub Actions'],
+      stack: ['Laravel', 'PHP', 'MySQL', 'OpenAI API', 'LiveKit Agents', 'Deepgram', 'Dialogflow', 'Queues', 'GitHub Actions', 'Twilio'],
       image: 'assets/projects/syncro.webp',
       live: null,
       repo: null,
@@ -118,13 +121,13 @@ window.CONTENT = {
     },
     {
       name: 'SMB Solutions CRM',
-      kicker: 'B2B & B2C CRM · built with Lovable',
+      kicker: 'CRM · AI-built with Lovable · automation',
       year: '2026',
       role: 'Full-stack engineer',
       status: null,
       summary: 'CRM supporting B2B and B2C client workflows — customer management, sales and operational processes — connected to the tools the business already runs on.',
       highlights: [
-        'Built with Lovable, with the interface wired to backend services, APIs and external platforms',
+        'Built AI-first with Lovable, with the generated interface wired to backend services, APIs and external platforms',
         'Integrated with Zapier, PandaDoc and Notion through APIs, webhooks and automated workflows',
         'Automations for data synchronisation, document workflows and process triggers that replaced manual operational work',
         'Translated business requirements into customer-management, sales and operations flows',
@@ -190,7 +193,7 @@ window.CONTENT = {
         'Firestore security rules separating public storefront reads from admin-only writes; guest orders are create-only',
         'Admin CMS for the hero slideshow and banners, drag-to-reorder with dnd-kit, and a revenue dashboard',
         'Cloudinary image delivery, EmailJS order notifications, and SEO: sitemap, robots and generated Open Graph images',
-        'Feature-branch workflow with pull-request reviews',
+        'AI-assisted development: agent guidelines (AGENTS.md / CLAUDE.md) live in the repo, alongside a feature-branch and pull-request workflow',
       ],
       facts: [['Hosting', 'Vercel'], ['Database', 'Firestore']],
       stack: ['Next.js', 'TypeScript', 'Firebase', 'Cloudinary', 'Tailwind CSS'],
@@ -236,9 +239,9 @@ window.CONTENT = {
    * The same values work as shareable links: yoursite.com/#work/syncro
    */
   tour: [
-    { at: 'index', title: 'Karl Daven Talib', text: 'Full-stack engineer, mostly backend. This site is a map — the tour drives, or drag anywhere to explore on your own.' },
+    { at: 'index', title: 'Karl Daven Talib', text: 'Full-stack engineer focused on AI, automation and system design. This site is a map — the tour drives, or drag anywhere to explore on your own.' },
     { at: 'experience', title: 'Experience', text: 'CTO at Syncro, full-stack at SMB Solutions, and freelance since 2023. The cards can be dragged around the desk.' },
-    { at: 'work/syncro', title: 'Syncro', text: 'Dental practice platform in production at 7 clinics, shipped from one codebase with automated per-clinic branches.' },
+    { at: 'work/syncro', title: 'Syncro', text: 'Dental practice platform in production at 7 clinics — automated per-clinic delivery, AI booking, and an AI voice receptionist in development.' },
     { at: 'work/one-shot-imaging', title: 'One Shot Imaging', text: 'Clinic operations with real-time handoff between the front desk and the imaging room. Live since October 2026; multi-tenant version in development.' },
     { at: 'work', title: 'Selected work', text: 'Seven projects — healthcare platforms, a CRM, a mobile app and its admin console, e-commerce and a kiosk system. Each card lists the technical details.' },
     { at: 'stack', title: 'Stack', text: 'Every tool, grouped by domain and linked to the projects that used it. Select any node to inspect it.' },
@@ -246,10 +249,12 @@ window.CONTENT = {
   ],
 
   skills: {
-    'Backend & APIs': ['PHP', 'Laravel', 'REST APIs', 'Webhooks', 'Livewire', 'Queues', 'RBAC', 'Laravel Reverb'],
-    'Frontend': ['Next.js', 'React', 'React Native', 'Expo', 'TypeScript', 'JavaScript', 'TALL Stack', 'AdminLTE', 'Filament'],
-    'Architecture & Data': ['Multi-Tenancy', 'Server-Driven UI', 'Database Design', 'MySQL', 'PostgreSQL', 'Supabase', 'Firebase'],
-    'Integrations': ['Zapier', 'PandaDoc', 'Notion', 'Third-Party APIs', 'Workflow Automation'],
-    'DevOps & Infra': ['Linux', 'Nginx', 'aaPanel', 'VPS Administration', 'Apache', 'Bash', 'Git', 'GitHub Actions'],
+    'AI & Automation': ['OpenAI API', 'LiveKit Agents', 'Deepgram', 'LLM Tool Calling', 'Dialogflow', 'AI-Assisted Development', 'Lovable', 'Workflow Automation', 'GitHub Actions'],
+    'System Design': ['Multi-Tenancy', 'Database Design', 'State Machines', 'Real-Time / WebSockets', 'Server-Driven UI', 'RBAC', 'Queues'],
+    'Services & APIs': ['PHP', 'Laravel', 'Python', 'REST APIs', 'Webhooks', 'Livewire', 'Laravel Reverb'],
+    'Frontend & Mobile': ['Next.js', 'React', 'React Native', 'Expo', 'TypeScript', 'JavaScript', 'TALL Stack', 'AdminLTE', 'Filament'],
+    'Data': ['MySQL', 'PostgreSQL', 'Supabase', 'Firebase'],
+    'Integrations': ['Zapier', 'PandaDoc', 'Notion', 'Third-Party APIs'],
+    'DevOps & Infra': ['Linux', 'Nginx', 'aaPanel', 'VPS Administration', 'Apache', 'Bash', 'Git'],
   },
 };

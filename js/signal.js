@@ -195,6 +195,7 @@ window.Signal = function (zone, C) {
     'webhook.received tenant=dental_07', 'queue.job processed InvoiceSync', 'rbac.check role=clinician ✓',
     'zapier → pandadoc doc.created', 'tenant.resolve oneshot_davao', 'notion.page.updated',
     'nginx 200 GET /api/v1/patients', 'livewire.hydrate PatientJourney', 'ssl.renew ok',
+    'agent.tool get_today_appointments ✓', 'stt.keyterms loaded dental vocabulary', 'actions propagate-main → 7 clinic branches',
   ];
   setInterval(() => { if (Plane.visible(zone)) log(ambient[(Math.random() * ambient.length) | 0]); }, 1400);
 

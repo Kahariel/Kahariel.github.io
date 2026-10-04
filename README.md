@@ -1,5 +1,7 @@
 # Karl Daven Talib — Portfolio
 
+Full-stack software engineer focused on **AI, automation and system design**.
+
 **Live:** https://kahariel.github.io/
 
 An interactive, map-style portfolio: drag to move, scroll or pinch to zoom, or take the guided tour.
