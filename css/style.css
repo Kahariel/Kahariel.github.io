@@ -243,6 +243,18 @@ body.touring #help, body.welcoming #help { display: none; }
 .proj li { padding: 9px 0 9px 22px; position: relative; border-bottom: 1px solid var(--line); font-size: 16px; color: #34363b; }
 .proj li::before { content: "—"; position: absolute; left: 0; color: var(--accent-text); }
 .proj.dark li::before { color: var(--accent-text-dark); }
+.proj .product { font-weight: 600; color: var(--ink); }
+.proj.dark .product { color: var(--ground); }
+.proj details.more summary {
+  list-style: none; cursor: pointer; padding: 10px 0 2px; font-family: var(--mono); font-size: 13px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--muted);
+}
+.proj details.more summary::-webkit-details-marker { display: none; }
+.proj details.more summary:hover { color: var(--ink); }
+.proj.dark details.more summary { color: #8b8e94; }
+.proj.dark details.more summary:hover { color: var(--ground); }
+.proj details.more:not([open]) .o, .proj details.more[open] .c { display: none; }
+.proj details.more ul { margin-top: 0; border-top: 0; }
 .proj .stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
 .proj .stack span { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; padding: 4px 9px; background: #efede8; }
 .proj .links { display: flex; gap: 10px; margin-top: 22px; font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }

@@ -72,12 +72,13 @@ window.CONTENT = {
    */
   projects: [
     {
-      name: 'Syncro',
-      kicker: 'Dental practice platform · EHR · AI',
+      id: 'syncro', // stable link: #work/syncro
+      name: 'Dental Clinic Management Platform',
+      kicker: 'Healthcare · SaaS · AI',
       year: '2025 — now',
       role: 'Co-lead engineer',
       status: 'In production at 7 dental clinics',
-      summary: 'Web-based clinic management system for single and multi-branch dental practices — patient records, appointments, prescriptions, lab reports, billing, insurance, and SMS/email campaigns — shipped to seven clinics from one codebase, with AI booking live and an AI voice receptionist in development.',
+      summary: 'Syncro — clinic management for single and multi-branch dental practices: records, appointments, prescriptions, billing and patient messaging. Live at 7 clinics from one codebase; AI booking live, AI voice receptionist in development.',
       highlights: [
         'Automated multi-client delivery: a GitHub Actions workflow merges main into every clinic\'s branch, with a dry-run mode that checks for conflicts before pushing',
         'AI voice receptionist, a prototype I built: a LiveKit voice agent with Deepgram speech-to-text tuned on dental vocabulary and an OpenAI model that calls the platform API as tools to look up and manage appointments',
@@ -97,12 +98,13 @@ window.CONTENT = {
       private: true,
     },
     {
-      name: 'One Shot Imaging',
-      kicker: 'Clinic operations · dental imaging',
+      id: 'one-shot-imaging', // stable link: #work/one-shot-imaging
+      name: 'Imaging Clinic Operations System',
+      kicker: 'Healthcare · Real-time',
       year: '2026',
       role: 'Lead engineer',
       status: 'Live since October 2026 · multi-tenant version in development',
-      summary: 'Runs every patient visit at a dental-imaging practice — registration, queueing, imaging work, checkout and billing — across role-scoped panels, with real-time handoff between the front desk and the imaging room. Now being extended into a multi-tenant platform.',
+      summary: 'One Shot Imaging — runs every visit at a dental-imaging clinic, from registration and queueing to imaging, checkout and billing, with live handoff between front desk and imaging room. Multi-tenant version in development.',
       highlights: [
         'Multi-tenant architecture in active development, building on the single-practice system already in production',
         'Visit state machine (waiting → in progress → checking out → completed / cancelled) with an active-visit pointer kept in sync by model events to block double registration',
@@ -120,12 +122,13 @@ window.CONTENT = {
       private: true,
     },
     {
-      name: 'SMB Solutions CRM',
-      kicker: 'CRM · AI-built with Lovable · automation',
+      id: 'smb-solutions-crm', // stable link: #work/smb-solutions-crm
+      name: 'CRM with Workflow Automation',
+      kicker: 'Business · Automation · AI-built',
       year: '2026',
       role: 'Full-stack engineer',
       status: null,
-      summary: 'CRM supporting B2B and B2C client workflows — customer management, sales and operational processes — connected to the tools the business already runs on.',
+      summary: 'SMB Solutions CRM — B2B and B2C customer, sales and operations workflows, built with Lovable and connected to Zapier, PandaDoc and Notion.',
       highlights: [
         'Built AI-first with Lovable, with the generated interface wired to backend services, APIs and external platforms',
         'Integrated with Zapier, PandaDoc and Notion through APIs, webhooks and automated workflows',
@@ -140,12 +143,13 @@ window.CONTENT = {
       private: true,
     },
     {
-      name: 'BloodSeek',
-      kicker: 'Blood donation · mobile app',
+      id: 'bloodseek', // stable link: #work/bloodseek
+      name: 'Blood Donation Mobile App',
+      kicker: 'Healthcare · Mobile',
       year: '2025',
       role: 'Lead developer',
       status: null,
-      summary: 'Android and iOS app that connects blood donors with donation facilities — find facilities and open blood requests on a map, pass an eligibility pre-assessment, book a donation, and get donor-care guidance before and after.',
+      summary: 'BloodSeek — Android and iOS app that helps donors find facilities and open blood requests on a map, check eligibility, and book a donation.',
       highlights: [
         'React Native on Expo with file-based routing (Expo Router) and the new architecture enabled',
         'Supabase Postgres backend with generated TypeScript types and typed API modules for appointments, events, facilities, requests and questionnaires',
@@ -162,12 +166,13 @@ window.CONTENT = {
       private: true,
     },
     {
-      name: 'BloodSeek Admin',
-      kicker: 'Blood bank · admin console',
+      id: 'bloodseek-admin', // stable link: #work/bloodseek-admin
+      name: 'Blood Bank Admin Dashboard',
+      kicker: 'Healthcare · Web',
       year: '2025',
       role: 'Lead developer',
       status: null,
-      summary: 'Web console for facility staff behind the BloodSeek app — manages donations, blood requests, donation drives and blood component inventory on the same Supabase database.',
+      summary: 'BloodSeek Admin — the staff console behind the app: donations, blood requests, donation drives and blood-component inventory.',
       highlights: [
         'Next.js App Router with Server Actions for every read and write, and Supabase SSR auth',
         'Separate inventory tracking for packed red blood cells, platelets and plasma',
@@ -182,12 +187,13 @@ window.CONTENT = {
       private: true,
     },
     {
-      name: 'KLNW',
-      kicker: 'E-commerce · storefront + admin',
+      id: 'klnw', // stable link: #work/klnw
+      name: 'Streetwear E-commerce Store',
+      kicker: 'E-commerce · Web',
       year: '2026',
       role: 'Full-stack developer',
       status: 'Live',
-      summary: 'Online store for KLNW, a Filipino streetwear and lifestyle brand — storefront, cart and guest checkout, plus an admin system for products, categories, orders and landing-page content.',
+      summary: 'KLNW — online store for a Filipino streetwear brand: storefront, cart and guest checkout, plus an admin for products, orders and site content.',
       highlights: [
         'Next.js and React 19 on Vercel, with Firebase Auth and Firestore',
         'Firestore security rules separating public storefront reads from admin-only writes; guest orders are create-only',
@@ -203,12 +209,13 @@ window.CONTENT = {
       private: true,
     },
     {
-      name: 'PiStamp',
-      kicker: 'Library attendance system',
+      id: 'pistamp', // stable link: #work/pistamp
+      name: 'Library Attendance Kiosk',
+      kicker: 'Education · Kiosk',
       year: '2024 — 2025',
       role: 'Lead developer',
       status: null,
-      summary: 'Time-in / time-out system for school libraries: students scan their ID barcode at a kiosk to log attendance, with manual entry and guest registration for visitors.',
+      summary: 'PiStamp — students scan their ID barcode at a kiosk to log library time-in and time-out, with manual entry and guest registration.',
       highlights: [
         'Scanner-driven kiosk: barcode input auto-submits after a short idle debounce, so no keyboard is needed',
         'Per-library sessions for College, Senior High, Junior High and Elementary',
@@ -241,8 +248,8 @@ window.CONTENT = {
   tour: [
     { at: 'index', title: 'Karl Daven Talib', text: 'Full-stack engineer focused on AI, automation and system design. This site is a map — the tour drives, or drag anywhere to explore on your own.' },
     { at: 'experience', title: 'Experience', text: 'CTO at Syncro, full-stack at SMB Solutions, and freelance since 2023. The cards can be dragged around the desk.' },
-    { at: 'work/syncro', title: 'Syncro', text: 'Dental practice platform in production at 7 clinics — automated per-clinic delivery, AI booking, and an AI voice receptionist in development.' },
-    { at: 'work/one-shot-imaging', title: 'One Shot Imaging', text: 'Clinic operations with real-time handoff between the front desk and the imaging room. Live since October 2026; multi-tenant version in development.' },
+    { at: 'work/syncro', title: 'Dental Clinic Management Platform', text: 'Syncro — in production at 7 clinics — automated per-clinic delivery, AI booking, and an AI voice receptionist in development.' },
+    { at: 'work/one-shot-imaging', title: 'Imaging Clinic Operations System', text: 'One Shot Imaging — real-time handoff between the front desk and the imaging room. Live since October 2026; multi-tenant version in development.' },
     { at: 'work', title: 'Selected work', text: 'Seven projects — healthcare platforms, a CRM, a mobile app and its admin console, e-commerce and a kiosk system. Each card lists the technical details.' },
     { at: 'stack', title: 'Stack', text: 'Every tool, grouped by domain and linked to the projects that used it. Select any node to inspect it.' },
     { at: 'contact', title: 'Get in touch', text: 'Copy the email or download the résumé from the top-right bar — it stays on screen wherever you are on the map.' },

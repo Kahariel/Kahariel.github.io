@@ -80,7 +80,7 @@
   const API = { moved: false };
 
   vp.addEventListener('pointerdown', e => {
-    if (e.target.closest('a, button, input, .no-pan')) return;
+    if (e.target.closest('a, button, input, summary, .no-pan')) return;
     cancelAnimationFrame(anim);
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     vp.classList.add('panning');

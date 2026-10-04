@@ -95,7 +95,7 @@ window.Nav = function (zones, C) {
   // outbound clicks on project links (live sites, source)
   Plane.world.addEventListener('click', e => {
     const a = e.target.closest('.proj .links a');
-    if (a) U.track('project-link/' + U.slug(a.closest('.proj').querySelector('h2').textContent));
+    if (a) U.track('project-link/' + a.closest('.proj').id.replace(/^project-/, ''));
   });
 
   // copy buttons inside the map (delegated; stop them from starting a pan)

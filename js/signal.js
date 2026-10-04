@@ -33,7 +33,7 @@ window.Signal = function (zone, C) {
     });
   });
   C.projects.forEach(p => {
-    const pn = add('proj:' + key(p.name), '/' + p.name.toLowerCase().replace(/\s+/g, '_'), 'proj', { project: p.name, what: p.summary, stack: p.stack });
+    const pn = add('proj:' + key(p.name), '/' + (p.id || p.name.toLowerCase()).replace(/[\s-]+/g, '_'), 'proj', { project: p.name, what: p.summary, stack: p.stack });
     p.stack.forEach(s => {
       const sn = byKey[key(s)] || add(key(s), s.toLowerCase(), 'skill', { skill: s, used_in: [p.name] });
       link(pn, sn, 170);

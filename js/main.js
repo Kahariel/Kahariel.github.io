@@ -50,6 +50,8 @@
   }
   fitProjects();
   document.fonts.ready.then(fitProjects);
+  // expanding "more technical details" changes a card's height → re-flow the columns
+  zones.projects.el.addEventListener('toggle', fitProjects, true);
 
   // ── signposts between zones ──
   const decor = [

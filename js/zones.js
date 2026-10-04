@@ -37,6 +37,11 @@ window.Zones = {
   },
 
   projects(z, C) {
+    // "Syncro — clinic management…" → product name in bold, the rest as normal text
+    const summaryHtml = t => {
+      const i = t.indexOf(' — ');
+      return i > 0 && i < 40 ? `<b class="product">${U.esc(t.slice(0, i))}</b> — ${U.esc(t.slice(i + 3))}` : U.esc(t);
+    };
     const cards = C.projects.map((p, i) => {
       const dark = [1, 3, 6].includes(i);
       const links = [
@@ -46,15 +51,17 @@ window.Zones = {
         !p.live && !p.repo && !p.private ? U.link(null, '', 'live url') : '',
       ].join('');
       return `
-        <article class="proj${dark ? ' dark' : ''}" id="project-${U.slug(p.name)}">
+        <article class="proj${dark ? ' dark' : ''}" id="project-${p.id || U.slug(p.name)}">
           <div class="shot${p.imageFit === 'contain' ? ' contain' : ''}">${U.img(p.image, p.name + ' screenshot', p.name + ' — screenshot (demo data)')}</div>
-          <div class="head"><span class="eyebrow">${U.esc(p.kicker)}</span><span class="eyebrow">P/${String(i + 1).padStart(2, '0')}<button class="copy-btn" type="button" data-copy-link="work/${U.slug(p.name)}" aria-label="Copy link to ${U.esc(p.name)}">Copy link</button></span></div>
+          <div class="head"><span class="eyebrow">${U.esc(p.kicker)}</span><span class="eyebrow">P/${String(i + 1).padStart(2, '0')}<button class="copy-btn" type="button" data-copy-link="work/${p.id || U.slug(p.name)}" aria-label="Copy link to ${U.esc(p.name)}">Copy link</button></span></div>
           <h2>${U.esc(p.name)}</h2>
           <div class="meta">${U.esc(p.year)} · ${U.esc(p.role)}${p.status ? `<span class="status">${U.esc(p.status)}</span>` : ''}</div>
-          <p>${U.esc(p.summary)}</p>
+          <p>${summaryHtml(p.summary)}</p>
           ${p.facts && p.facts.length ? `<dl class="facts">${p.facts.map(([k, v]) => `<div><dt>${U.esc(k)}</dt><dd>${U.esc(v)}</dd></div>`).join('')}</dl>` : ''}
           <div class="eyebrow sub">Technical details</div>
-          <ul>${p.highlights.map(x => `<li>${U.esc(x)}</li>`).join('')}</ul>
+          <ul>${p.highlights.slice(0, 3).map(x => `<li>${U.esc(x)}</li>`).join('')}</ul>
+          ${p.highlights.length > 3 ? `<details class="more"><summary><span class="c">+ ${p.highlights.length - 3} more technical details</span><span class="o">− Show fewer</span></summary>
+            <ul>${p.highlights.slice(3).map(x => `<li>${U.esc(x)}</li>`).join('')}</ul></details>` : ''}
           <div class="stack">${p.stack.map(t => `<span>${U.esc(t)}</span>`).join('')}</div>
           <div class="links">${links}</div>
         </article>`;
