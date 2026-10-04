@@ -16,13 +16,13 @@ window.CONTENT = {
   // words the particle name cycles through when clicked
   words: ['KARL', 'BACKEND', 'SYSTEMS', 'TALIB'],
 
-  photo: null, // e.g. 'assets/me.jpg'
+  photo: 'assets/portrait.webp',
   bio: 'Full-stack engineer who mostly lives in the backend. I architect multi-tenant platforms, wire up APIs and webhooks, design relational data, and keep the servers running — healthcare, CRM, and business systems built on Laravel, Filament, Livewire, Next.js, React and Supabase.',
 
   links: {
-    github: null,   // e.g. 'https://github.com/you'
-    linkedin: null, // e.g. 'https://linkedin.com/in/you'
-    resume: null,   // e.g. 'assets/karl-talib-resume.pdf'
+    github: 'https://github.com/Kahariel',
+    linkedin: 'https://ph.linkedin.com/in/karl-daven-talib-022047245',
+    resume: 'assets/Karl-Daven-Talib-CV.pdf',
   },
 
   experience: [
@@ -214,7 +214,7 @@ window.CONTENT = {
       ],
       facts: [['Libraries', '4']],
       stack: ['PHP', 'MySQL', 'JavaScript', 'AdminLTE'],
-      image: null,
+      image: 'assets/projects/pistamp.webp',
       live: null,
       repo: null,
       private: true,

@@ -219,7 +219,7 @@ body.touring #help, body.welcoming #help { display: none; }
 /* ───────── 03 About ───────── */
 .z-about .photo { position: absolute; width: 380px; }
 .z-about .photo .frame { height: 470px; background: #e4e2dc; border: 1px solid var(--line); color: var(--muted); }
-.z-about .photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.05); }
+.z-about .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block; filter: grayscale(1) contrast(1.05); }
 .z-about .photo figcaption { margin-top: 12px; font-family: var(--mono); font-size: 13px; letter-spacing: .06em; color: var(--muted); }
 .z-about .bio { position: absolute; width: 640px; font-family: var(--serif); font-size: 44px; line-height: 1.12; letter-spacing: -.005em; }
 .z-about .facts { position: absolute; width: 640px; border-top: 1px solid var(--ink); font-size: 17px; }

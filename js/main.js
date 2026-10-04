@@ -15,7 +15,7 @@
   const zones = {};
   Object.entries(LAYOUT).forEach(([id, z]) => {
     const el = U.el('section', 'zone z-' + id);
-    el.id = id;
+    el.id = 'zone-' + id; // never a bare section name: #about must not trigger the browser's anchor scroll
     el.setAttribute('aria-label', z.nav === 'Index' ? 'Introduction' : z.nav);
     Object.assign(el.style, { left: z.x + 'px', top: z.y + 'px', width: z.w + 'px', height: z.h + 'px' });
     Plane.world.appendChild(el);

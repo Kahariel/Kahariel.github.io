@@ -113,6 +113,9 @@ window.Nav = function (zones, C) {
   // is overflow:hidden, and browsers try to scroll it to reveal focused elements;
   // undo that, since the camera does the moving here.
   const vp = document.getElementById('viewport');
+  // The camera does all the moving; the map container itself must never scroll
+  // (anchor jumps, focus, find-in-page can all try to scroll it).
+  vp.addEventListener('scroll', () => { if (vp.scrollTop || vp.scrollLeft) vp.scrollTop = vp.scrollLeft = 0; });
   Plane.world.addEventListener('focusin', e => {
     vp.scrollTop = vp.scrollLeft = 0;
     requestAnimationFrame(() => { vp.scrollTop = vp.scrollLeft = 0; });
