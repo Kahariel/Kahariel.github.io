@@ -19,7 +19,7 @@ window.Signal = function (zone, C) {
   };
   const link = (a, b, len) => edges.push({ a, b, len });
 
-  const hub = add('hub', 'karl', 'hub', { engineer: C.name.full, role: C.role, focus: C.focus, based: C.location, contact: C.email });
+  const hub = add('hub', 'karl', 'hub', { developer: C.name.full, role: C.role, focus: C.focus, based: C.location, contact: C.email });
   const usedIn = s => C.projects.filter(p => p.stack.some(t => key(t) === key(s))).map(p => p.name);
 
   Object.entries(C.skills).forEach(([cat, list]) => {

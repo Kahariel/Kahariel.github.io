@@ -7,8 +7,8 @@
  */
 window.CONTENT = {
   name: { first: 'Karl', middle: 'Daven', last: 'Talib', full: 'Karl Daven P. Talib' },
-  role: 'Full-Stack Software Engineer',
-  focus: 'AI, Automation & System Design',
+  role: 'Full-Stack Developer',
+  focus: 'AI, Automation & Integrations',
   location: 'Davao City, Philippines',
   email: 'pioloulo123@gmail.com',
   phone: '+63 916 154 2709',
@@ -17,7 +17,7 @@ window.CONTENT = {
   words: ['KARL', 'SYSTEMS', 'AUTOMATE', 'AI', 'TALIB'],
 
   photo: 'assets/portrait.webp',
-  bio: 'Full-stack engineer who designs systems and automates the work around them. I architect multi-tenant platforms, connect them through APIs, webhooks and workflow automation, and bring AI into both the products and the way I build them — across healthcare, CRM and business operations.',
+  bio: 'Full-stack developer who designs systems and automates the work around them. I architect multi-tenant platforms, connect them through APIs, webhooks and workflow automation, and bring AI into both the products and the way I build them — across healthcare, CRM and business operations.',
 
   links: {
     github: 'https://github.com/Kahariel',
@@ -28,7 +28,7 @@ window.CONTENT = {
   experience: [
     {
       company: 'SMB Solutions',
-      role: 'Full-Stack Software Engineer',
+      role: 'Full-Stack Developer',
       years: '2026',
       where: 'Remote',
       points: [
@@ -39,7 +39,7 @@ window.CONTENT = {
     },
     {
       company: 'Syncro',
-      role: 'Chief Technology Officer / Full-Stack Engineer',
+      role: 'Chief Technology Officer / Full-Stack Developer',
       years: '2023 — 2026',
       where: 'Davao City, PH',
       points: [
@@ -76,7 +76,7 @@ window.CONTENT = {
       name: 'Dental Clinic Management Platform',
       kicker: 'Healthcare · SaaS · AI',
       year: '2025 — now',
-      role: 'Co-lead engineer',
+      role: 'Co-lead developer',
       status: 'In production at 7 dental clinics',
       summary: 'Syncro — clinic management for single and multi-branch dental practices: records, appointments, prescriptions, billing and patient messaging. Live at 7 clinics from one codebase; AI booking live, AI voice receptionist in development.',
       highlights: [
@@ -102,7 +102,7 @@ window.CONTENT = {
       name: 'Imaging Clinic Operations System',
       kicker: 'Healthcare · Real-time',
       year: '2026',
-      role: 'Lead engineer',
+      role: 'Lead developer',
       status: 'Live since October 2026 · multi-tenant version in development',
       summary: 'One Shot Imaging — runs every visit at a dental-imaging clinic, from registration and queueing to imaging, checkout and billing, with live handoff between front desk and imaging room. Multi-tenant version in development.',
       highlights: [
@@ -126,7 +126,7 @@ window.CONTENT = {
       name: 'CRM with Workflow Automation',
       kicker: 'Business · Automation · AI-built',
       year: '2026',
-      role: 'Full-stack engineer',
+      role: 'Full-stack developer',
       status: null,
       summary: 'SMB Solutions CRM — B2B and B2C customer, sales and operations workflows, built with Lovable and connected to Zapier, PandaDoc and Notion.',
       highlights: [
@@ -246,7 +246,7 @@ window.CONTENT = {
    * The same values work as shareable links: yoursite.com/#work/syncro
    */
   tour: [
-    { at: 'index', title: 'Karl Daven Talib', text: 'Full-stack engineer focused on AI, automation and system design. This site is a map — the tour drives, or drag anywhere to explore on your own.' },
+    { at: 'index', title: 'Karl Daven Talib', text: 'Full-stack developer focused on AI, automation and integrations. This site is a map — the tour drives, or drag anywhere to explore on your own.' },
     { at: 'experience', title: 'Experience', text: 'CTO at Syncro, full-stack at SMB Solutions, and freelance since 2023. The cards can be dragged around the desk.' },
     { at: 'work/syncro', title: 'Dental Clinic Management Platform', text: 'Syncro — in production at 7 clinics — automated per-clinic delivery, AI booking, and an AI voice receptionist in development.' },
     { at: 'work/one-shot-imaging', title: 'Imaging Clinic Operations System', text: 'One Shot Imaging — real-time handoff between the front desk and the imaging room. Live since October 2026; multi-tenant version in development.' },
