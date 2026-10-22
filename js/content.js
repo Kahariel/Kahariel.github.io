@@ -30,7 +30,7 @@ window.CONTENT = {
       company: 'SMB Solutions',
       role: 'Full-Stack Developer',
       years: '2026',
-      where: 'Remote',
+      where: 'Remote · US client',
       points: [
         'CRM and business workflow features with Lovable, wired to backend services, APIs and external platforms',
         'Automation workflows across Zapier, PandaDoc and Notion — data sync, document flows, automated triggers',
@@ -58,12 +58,16 @@ window.CONTENT = {
       points: [
         'Custom business & institutional web apps, from requirements to database-driven systems',
         'Laravel, PHP, Livewire, MySQL, WordPress, JavaScript — built, deployed, maintained',
+        'Payment gateway and third-party integrations; production deployments with Docker',
       ],
     },
   ],
 
-  education: { school: 'Assumption College of Davao', degree: 'B.S. Information Technology', years: '2022 — 2026' },
-  certs: [{ name: 'TOPCIT', detail: 'Level 4 Certification of Proficiency' }],
+  education: { school: 'Assumption College of Davao', degree: 'B.S. Information Technology', years: 'Graduated 2026' },
+  certs: [
+    { name: 'TOPCIT', detail: 'Level 4 Certification of Proficiency' },
+    { name: 'DICT', detail: 'Certificate of Proficiency in Office Productivity' },
+  ],
 
   /*
    * Projects. Every repo is private, so `private: true` shows
@@ -261,7 +265,7 @@ window.CONTENT = {
     'Services & APIs': ['PHP', 'Laravel', 'Python', 'REST APIs', 'Webhooks', 'Livewire', 'Laravel Reverb'],
     'Frontend & Mobile': ['Next.js', 'React', 'React Native', 'Expo', 'TypeScript', 'JavaScript', 'TALL Stack', 'AdminLTE', 'Filament'],
     'Data': ['MySQL', 'PostgreSQL', 'Supabase', 'Firebase'],
-    'Integrations': ['Zapier', 'PandaDoc', 'Notion', 'Third-Party APIs'],
-    'DevOps & Infra': ['Linux', 'Nginx', 'aaPanel', 'VPS Administration', 'Apache', 'Bash', 'Git'],
+    'Integrations': ['Zapier', 'PandaDoc', 'Notion', 'Payment Gateways', 'Third-Party APIs'],
+    'DevOps & Infra': ['Docker', 'Linux', 'Nginx', 'aaPanel', 'VPS Administration', 'Apache', 'Bash', 'Git'],
   },
 };

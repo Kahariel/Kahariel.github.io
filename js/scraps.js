@@ -16,11 +16,11 @@ window.Scraps = function (zone, C) {
 
   defs.push(
     { cls: 'card small', html: `<div class="top"><span class="eyebrow">Education</span><span class="eyebrow">${U.esc(C.education.years)}</span></div>
-        <h3>${U.esc(C.education.degree)}</h3><div class="role" style="margin-bottom:0">${U.esc(C.education.school)}</div>`, at: [.05, .7], r: .7 },
+        <h3>${U.esc(C.education.degree)}</h3><div class="role" style="margin-bottom:0">${U.esc(C.education.school)}</div>`, at: [.03, .7], r: .7 },
     ...C.certs.map((c, i) => ({ cls: 'card small', html: `<div class="top"><span class="eyebrow">Certification</span></div>
-        <h3>${U.esc(c.name)}</h3><div class="role" style="margin-bottom:0">${U.esc(c.detail)}</div>`, at: [.33 + i * .05, .74], r: -.9 })),
+        <h3>${U.esc(c.name)}</h3><div class="role" style="margin-bottom:0">${U.esc(c.detail)}</div>`, at: [.27 + i * .23, .74 - i * .03], r: i % 2 ? .6 : -.9 })),
     { cls: 'card small dark', html: `<div class="top"><span class="eyebrow">Résumé</span><span class="eyebrow">PDF</span></div>
-        <h3>Full CV</h3><div class="role" style="margin-bottom:0">${U.link(C.links.resume, 'Download ↓', 'resume pdf link')}</div>`, at: [.72, .72], r: 1 },
+        <h3>Full CV</h3><div class="role" style="margin-bottom:0">${U.link(C.links.resume, 'Download ↓', 'resume pdf link')}</div>`, at: [.76, .72], r: 1 },
   );
 
   let z = 1;
