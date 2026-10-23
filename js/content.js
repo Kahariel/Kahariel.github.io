@@ -11,7 +11,7 @@ window.CONTENT = {
   focus: 'AI, Automation & Integrations',
   location: 'Davao City, Philippines',
   email: 'pioloulo123@gmail.com',
-  phone: '+63 916 154 2709',
+  phone: '+63 991 844 4532',
 
   // words the particle name cycles through when clicked
   words: ['KARL', 'SYSTEMS', 'AUTOMATE', 'AI', 'TALIB'],
