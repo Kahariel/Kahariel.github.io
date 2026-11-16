@@ -81,8 +81,8 @@ window.CONTENT = {
       kicker: 'Healthcare · SaaS · AI',
       year: '2025 — now',
       role: 'Co-lead developer',
-      status: 'In production at 7 dental clinics',
-      summary: 'Syncro — clinic management for single and multi-branch dental practices: records, appointments, prescriptions, billing and patient messaging. Live at 7 clinics from one codebase; AI booking live, AI voice receptionist in development.',
+      status: 'In production at 11 dental clinics',
+      summary: 'Syncro — clinic management for single and multi-branch dental practices: records, appointments, prescriptions, billing and patient messaging. Live at 11 clinics from one codebase; AI booking live, AI voice receptionist in development.',
       highlights: [
         'Automated multi-client delivery: a GitHub Actions workflow merges main into every clinic\'s branch, with a dry-run mode that checks for conflicts before pushing',
         'AI voice receptionist, a prototype I built: a LiveKit voice agent with Deepgram speech-to-text tuned on dental vocabulary and an OpenAI model that calls the platform API as tools to look up and manage appointments',
@@ -94,9 +94,33 @@ window.CONTENT = {
         'Patient notes with templates, revision history, comments and letterhead PDF export',
         'Queued SMS (Twilio, Plivo) and email campaign jobs; Excel bulk import for patients, medicines and diagnoses',
       ],
-      facts: [['Clinics', '7'], ['Migrations', '134'], ['Models', '60+']],
+      facts: [['Clinics', '11'], ['Migrations', '134'], ['Models', '60+']],
       stack: ['Laravel', 'PHP', 'MySQL', 'OpenAI API', 'LiveKit Agents', 'Deepgram', 'Dialogflow', 'Queues', 'GitHub Actions', 'Twilio'],
       image: 'assets/projects/syncro.webp',
+      live: null,
+      repo: null,
+      private: true,
+    },
+    {
+      id: 'syncro-hub', // stable link: #work/syncro-hub
+      name: 'SaaS Control Plane for Syncro',
+      kicker: 'SaaS · Automation · DevOps',
+      year: '2026',
+      role: 'Lead developer',
+      status: 'In production · internal platform',
+      summary: 'Syncro Hub — the internal platform that runs Syncro as a business: every clinic, its plan and subscription, revenue and usage analytics, and one-click setup of a new clinic site on the server.',
+      highlights: [
+        'One-click clinic provisioning: DNS through the GoDaddy API, a GitHub branch, aaPanel site and database, .env, SSL, nginx, queue worker and deploy webhook. Failed runs resume from the last finished step',
+        'Privilege-separated by design: the web app only queues provisioning requests and a root cron runner validates and executes them, streaming the server log back to the page live',
+        'Subscription API that clinics read their plan from, with a cached last answer for outages and a fail-open default, replacing per-clinic .env edits',
+        'Drift detection: an hourly job compares every clinic\'s config with the hub (In Sync / Out of Sync / Unreachable); writes are backed up first and replaced atomically',
+        'Nightly usage analytics read from each clinic\'s own database in READ ONLY sessions, counting exactly like the clinic app, plus MRR history, plan mix, renewals and inactive-clinic alerts',
+        'Self-deploying: a cron script pulls main, backs up the database, rebuilds only what changed and migrates, rolling back automatically if it fails before migrations',
+        'Three roles (Super Admin, Owner, Manager), forced password change on first sign-in, per-route rate limits and a branded onboarding email to each new clinic',
+      ],
+      facts: [['Tests', '120'], ['Roles', '3'], ['New clinic', 'One click']],
+      stack: ['Laravel', 'Inertia', 'React', 'TypeScript', 'Tailwind CSS', 'MySQL', 'Bash', 'aaPanel', 'Nginx', 'REST APIs', 'Webhooks', 'RBAC'],
+      image: 'assets/projects/syncro-hub.webp',
       live: null,
       repo: null,
       private: true,
@@ -242,7 +266,7 @@ window.CONTENT = {
    * Besides page views it records: which sections visitors reach, tour starts, email / link copies,
    * résumé downloads and clicks on live project links.
    */
-  analytics: null,
+  analytics: { goatcounter: 'parziv4l' },
 
   /*
    * Guided tour. `at` is a section (index, experience, stack, about, work, contact)
@@ -252,9 +276,10 @@ window.CONTENT = {
   tour: [
     { at: 'index', title: 'Karl Daven Talib', text: 'Full-stack developer focused on AI, automation and integrations. This site is a map — the tour drives, or drag anywhere to explore on your own.' },
     { at: 'experience', title: 'Experience', text: 'CTO at Syncro, full-stack at SMB Solutions, and freelance since 2023. The cards can be dragged around the desk.' },
-    { at: 'work/syncro', title: 'Dental Clinic Management Platform', text: 'Syncro — in production at 7 clinics — automated per-clinic delivery, AI booking, and an AI voice receptionist in development.' },
+    { at: 'work/syncro', title: 'Dental Clinic Management Platform', text: 'Syncro — in production at 11 clinics — automated per-clinic delivery, AI booking, and an AI voice receptionist in development.' },
+    { at: 'work/syncro-hub', title: 'SaaS Control Plane for Syncro', text: 'Syncro Hub — the internal platform behind Syncro: plans and subscriptions, revenue and usage analytics, and one-click setup of a new clinic, from DNS to SSL.' },
     { at: 'work/one-shot-imaging', title: 'Imaging Clinic Operations System', text: 'One Shot Imaging — real-time handoff between the front desk and the imaging room. Live since October 2026; multi-tenant version in development.' },
-    { at: 'work', title: 'Selected work', text: 'Seven projects — healthcare platforms, a CRM, a mobile app and its admin console, e-commerce and a kiosk system. Each card lists the technical details.' },
+    { at: 'work', title: 'Selected work', text: 'Eight projects — healthcare platforms and the SaaS control plane behind them, a CRM, a mobile app and its admin console, e-commerce and a kiosk system. Each card lists the technical details.' },
     { at: 'stack', title: 'Stack', text: 'Every tool, grouped by domain and linked to the projects that used it. Select any node to inspect it.' },
     { at: 'contact', title: 'Get in touch', text: 'Copy the email or download the résumé from the top-right bar — it stays on screen wherever you are on the map.' },
   ],
@@ -263,7 +288,7 @@ window.CONTENT = {
     'AI & Automation': ['OpenAI API', 'LiveKit Agents', 'Deepgram', 'LLM Tool Calling', 'Dialogflow', 'AI-Assisted Development', 'Lovable', 'Workflow Automation', 'GitHub Actions'],
     'System Design': ['Multi-Tenancy', 'Database Design', 'State Machines', 'Real-Time / WebSockets', 'Server-Driven UI', 'RBAC', 'Queues'],
     'Services & APIs': ['PHP', 'Laravel', 'Python', 'REST APIs', 'Webhooks', 'Livewire', 'Laravel Reverb'],
-    'Frontend & Mobile': ['Next.js', 'React', 'React Native', 'Expo', 'TypeScript', 'JavaScript', 'TALL Stack', 'AdminLTE', 'Filament'],
+    'Frontend & Mobile': ['Next.js', 'React', 'React Native', 'Expo', 'TypeScript', 'JavaScript', 'Inertia', 'TALL Stack', 'AdminLTE', 'Filament'],
     'Data': ['MySQL', 'PostgreSQL', 'Supabase', 'Firebase'],
     'Integrations': ['Zapier', 'PandaDoc', 'Notion', 'Payment Gateways', 'Third-Party APIs'],
     'DevOps & Infra': ['Docker', 'Linux', 'Nginx', 'aaPanel', 'VPS Administration', 'Apache', 'Bash', 'Git'],

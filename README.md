@@ -24,7 +24,7 @@ placeholder, so it's easy to see what's missing.
 | Link | Opens |
 |---|---|
 | `/#experience`, `/#stack`, `/#about`, `/#work`, `/#contact` | that section |
-| `/#work/syncro`, `/#work/one-shot-imaging`, … | a specific project card |
+| `/#work/syncro`, `/#work/syncro-hub`, … | a specific project card |
 | `/#plain` | the list view |
 
 ## Run locally
