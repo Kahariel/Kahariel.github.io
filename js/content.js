@@ -18,13 +18,17 @@ window.CONTENT = {
   lead: 'I design systems and automate the work around them.',
   bio: 'I architect multi-tenant platforms, connect them through APIs, webhooks and workflow automation, and bring AI into both the products and the way I build them — across healthcare, CRM and business operations.',
 
-  // the strip of headline numbers under the intro: [big value, what it means]
-  proof: [
-    ['11', 'dental clinics running Syncro in production, from one codebase'],
-    ['1 click', 'to set up a new clinic site, from DNS to SSL'],
-    ['AI', 'booking chatbot live, voice receptionist in development'],
-    ['2023', 'building client systems since: CTO, freelance and a US client'],
-  ],
+  // the list under the intro: each row links to a project card (`to` is the project's id).
+  // Put *asterisks* around the part of the line to show in bold.
+  shipped: {
+    title: 'In production now',
+    items: [
+      { name: 'Syncro', text: 'Clinic management, live at *11 dental clinics*', to: 'syncro' },
+      { name: 'One Shot Imaging', text: 'Imaging clinic operations, running at *6 branches*', to: 'one-shot-imaging' },
+      { name: 'Syncro Hub', text: 'The control plane behind Syncro: plans, analytics, *one-click clinic setup*', to: 'syncro-hub' },
+      { name: 'SMB Solutions CRM', text: 'CRM for a US client, wired to *Zapier, PandaDoc and Notion*', to: 'smb-solutions-crm' },
+    ],
+  },
 
   links: {
     github: 'https://github.com/Kahariel',
@@ -168,7 +172,7 @@ window.CONTENT = {
       kicker: 'Business · Automation · AI-built',
       year: '2026',
       role: 'Full-stack developer',
-      status: null,
+      status: 'In production',
       summary: 'SMB Solutions CRM — B2B and B2C customer, sales and operations workflows, built with Lovable and connected to Zapier, PandaDoc and Notion.',
       highlights: [
         'Built AI-first with Lovable, with the generated interface wired to backend services, APIs and external platforms',

@@ -11,7 +11,7 @@ Colours, corner radius and the font (Manrope, self-hosted) are variables at the 
 
 ## Editing content
 
-Everything the site says lives in [`js/content.js`](js/content.js): intro, headline numbers,
+Everything the site says lives in [`js/content.js`](js/content.js): intro, the shipped-systems list,
 experience, projects, skills and links. A link or image left as `null` shows on the page as a
 dashed placeholder, so it's easy to see what's missing.
 

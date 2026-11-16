@@ -27,7 +27,10 @@
       <button class="btn" type="button" data-copy-email>Copy email</button>
       <span class="where">${e(C.location)}</span>
     </div>
-    <dl class="proof">${C.proof.map(([k, v]) => `<div><dt>${e(k)}</dt><dd>${e(v)}</dd></div>`).join('')}</dl>`;
+    <div class="shipped">
+      <div class="eyebrow">${e(C.shipped.title)}</div>
+      ${C.shipped.items.map(x => `<a href="#work/${e(x.to)}" data-shipped="${e(x.to)}"><b>${e(x.name)}</b><span>${e(x.text).replace(/\*(.+?)\*/g, '<strong>$1</strong>')}</span><i aria-hidden="true">→</i></a>`).join('')}
+    </div>`;
 
   // ── work ──
   // "Syncro — clinic management…" → product name in bold, the rest as normal text
@@ -139,7 +142,7 @@
 
   // ── clicks: copy email / copy link / zoom / tracked links ──
   document.addEventListener('click', async ev => {
-    const t = ev.target.closest('[data-copy-email], [data-copy-link], [data-zoom], [data-resume], .proj .links a');
+    const t = ev.target.closest('[data-copy-email], [data-copy-link], [data-zoom], [data-resume], [data-shipped], .proj .links a');
     if (!t) return;
     if (t.hasAttribute('data-copy-email')) {
       U.track('copy-email');
@@ -153,6 +156,8 @@
       boxImg.alt = t.querySelector('img').alt;
       box.showModal();
       U.track('zoom/' + t.dataset.id, { once: true });
+    } else if (t.dataset.shipped) {
+      U.track('hero-link/' + t.dataset.shipped);
     } else if (t.hasAttribute('data-resume')) {
       U.track('resume-download');
     } else {
