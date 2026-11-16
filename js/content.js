@@ -1,7 +1,7 @@
 /*
  * Everything the site says lives here. Edit this file, refresh, done.
  *
- * Any value set to null shows up on the page as a dashed [PLACEHOLDER] box,
+ * A link or image set to null shows up on the page as a dashed [PLACEHOLDER],
  * so it's easy to spot what's still missing. Replace null with a real value
  * (a URL, an image path like 'assets/me.jpg', etc.) to fill it in.
  */
@@ -13,11 +13,18 @@ window.CONTENT = {
   email: 'pioloulo123@gmail.com',
   phone: '+63 991 844 4532',
 
-  // words the particle name cycles through when clicked
-  words: ['KARL', 'SYSTEMS', 'AUTOMATE', 'AI', 'TALIB'],
-
   photo: 'assets/portrait.webp',
-  bio: 'Full-stack developer who designs systems and automates the work around them. I architect multi-tenant platforms, connect them through APIs, webhooks and workflow automation, and bring AI into both the products and the way I build them — across healthcare, CRM and business operations.',
+  // `lead` is the one-liner under the name; `bio` opens the About section
+  lead: 'I design systems and automate the work around them.',
+  bio: 'I architect multi-tenant platforms, connect them through APIs, webhooks and workflow automation, and bring AI into both the products and the way I build them — across healthcare, CRM and business operations.',
+
+  // the strip of headline numbers under the intro: [big value, what it means]
+  proof: [
+    ['11', 'dental clinics running Syncro in production, from one codebase'],
+    ['1 click', 'to set up a new clinic site, from DNS to SSL'],
+    ['AI', 'booking chatbot live, voice receptionist in development'],
+    ['2023', 'building client systems since: CTO, freelance and a US client'],
+  ],
 
   links: {
     github: 'https://github.com/Kahariel',
@@ -72,11 +79,15 @@ window.CONTENT = {
   /*
    * Projects. Every repo is private, so `private: true` shows
    * "Private codebase · walkthrough on request" instead of a source link.
-   * `image` takes a screenshot path — use demo data only, never real patient records.
+   * `image` is null for every project: the screenshots are confidential, so cards are text-only.
+   * (Setting a path, e.g. 'assets/projects/x.webp', brings a screenshot back for that card.)
+   * `featured: true` gives a project a full-width row at the top of the Work section;
+   * the rest sit in a two-column grid below.
    */
   projects: [
     {
       id: 'syncro', // stable link: #work/syncro
+      featured: true,
       name: 'Dental Clinic Management Platform',
       kicker: 'Healthcare · SaaS · AI',
       year: '2025 — now',
@@ -96,13 +107,14 @@ window.CONTENT = {
       ],
       facts: [['Clinics', '11'], ['Migrations', '134'], ['Models', '60+']],
       stack: ['Laravel', 'PHP', 'MySQL', 'OpenAI API', 'LiveKit Agents', 'Deepgram', 'Dialogflow', 'Queues', 'GitHub Actions', 'Twilio'],
-      image: 'assets/projects/syncro.webp',
+      image: null,
       live: null,
       repo: null,
       private: true,
     },
     {
       id: 'syncro-hub', // stable link: #work/syncro-hub
+      featured: true,
       name: 'SaaS Control Plane for Syncro',
       kicker: 'SaaS · Automation · DevOps',
       year: '2026',
@@ -120,21 +132,22 @@ window.CONTENT = {
       ],
       facts: [['Tests', '120'], ['Roles', '3'], ['New clinic', 'One click']],
       stack: ['Laravel', 'Inertia', 'React', 'TypeScript', 'Tailwind CSS', 'MySQL', 'Bash', 'aaPanel', 'Nginx', 'REST APIs', 'Webhooks', 'RBAC'],
-      image: 'assets/projects/syncro-hub.webp',
+      image: null,
       live: null,
       repo: null,
       private: true,
     },
     {
       id: 'one-shot-imaging', // stable link: #work/one-shot-imaging
+      featured: true,
       name: 'Imaging Clinic Operations System',
       kicker: 'Healthcare · Real-time',
       year: '2026',
       role: 'Lead developer',
-      status: 'Live since October 2026 · multi-tenant version in development',
-      summary: 'One Shot Imaging — runs every visit at a dental-imaging clinic, from registration and queueing to imaging, checkout and billing, with live handoff between front desk and imaging room. Multi-tenant version in development.',
+      status: 'Live since October 2026 · multi-tenant, 6 branches',
+      summary: 'One Shot Imaging — runs every visit at a dental-imaging clinic, from registration and queueing to imaging, checkout and billing, with live handoff between front desk and imaging room. Now multi-tenant, running at 6 branches.',
       highlights: [
-        'Multi-tenant architecture in active development, building on the single-practice system already in production',
+        'Multi-tenant architecture running 6 branches, built out from the single-practice system that went into production first',
         'Visit state machine (waiting → in progress → checking out → completed / cancelled) with an active-visit pointer kept in sync by model events to block double registration',
         'Real-time Receptionist ↔ Technician updates over self-hosted Laravel Reverb WebSockets, broadcast from model observers on a private channel',
         'BIR-compliant billing: VAT backed out of inclusive prices at checkout, 0%-VAT handling for PWD and Senior discounts, voids instead of deletes, doctor commissions locked at billing',
@@ -142,9 +155,9 @@ window.CONTENT = {
         'Streamed exports that rebuild the clinic\'s paper daily forms, plus an audit log of every financial and queue write',
         'Deployed on aaPanel with a Supervisor-managed queue worker and Reverb server behind an Nginx WebSocket proxy',
       ],
-      facts: [['Test files', '60'], ['Migrations', '49'], ['Panels', '4']],
+      facts: [['Branches', '6'], ['Test files', '60'], ['Migrations', '49'], ['Panels', '4']],
       stack: ['Laravel', 'Filament', 'Livewire', 'Laravel Reverb', 'MySQL', 'Multi-Tenancy', 'Tailwind CSS', 'aaPanel'],
-      image: 'assets/projects/one-shot-imaging.webp',
+      image: null,
       live: null,
       repo: null,
       private: true,
@@ -165,7 +178,7 @@ window.CONTENT = {
       ],
       facts: [['Built with', 'Lovable'], ['Integrations', '3']],
       stack: ['Lovable', 'Webhooks', 'Zapier', 'PandaDoc', 'Notion', 'Workflow Automation'],
-      image: 'assets/projects/smb-solutions-crm.webp',
+      image: null,
       live: null,
       repo: null,
       private: true,
@@ -187,8 +200,7 @@ window.CONTENT = {
       ],
       facts: [['Platforms', 'Android · iOS'], ['Screens', '20+']],
       stack: ['React Native', 'Expo', 'TypeScript', 'Supabase', 'Mapbox', 'Firebase'],
-      image: 'assets/projects/bloodseek.webp',
-      imageFit: 'contain', // phone screens: show whole, don't crop
+      image: null,
       live: null,
       repo: null,
       private: true,
@@ -209,7 +221,7 @@ window.CONTENT = {
       ],
       facts: [['Inventory types', '3'], ['Shared DB', 'with the app']],
       stack: ['Next.js', 'React', 'TypeScript', 'Supabase', 'Tailwind CSS', 'Zod'],
-      image: 'assets/projects/bloodseek-admin.webp',
+      image: null,
       live: null,
       repo: null,
       private: true,
@@ -231,7 +243,7 @@ window.CONTENT = {
       ],
       facts: [['Hosting', 'Vercel'], ['Database', 'Firestore']],
       stack: ['Next.js', 'TypeScript', 'Firebase', 'Cloudinary', 'Tailwind CSS'],
-      image: 'assets/projects/klnw.webp',
+      image: null,
       live: 'https://klnwglobalmovement.com',
       repo: null,
       private: true,
@@ -252,7 +264,7 @@ window.CONTENT = {
       ],
       facts: [['Libraries', '4']],
       stack: ['PHP', 'MySQL', 'JavaScript', 'AdminLTE'],
-      image: 'assets/projects/pistamp.webp',
+      image: null,
       live: null,
       repo: null,
       private: true,
@@ -263,26 +275,10 @@ window.CONTENT = {
    * Analytics — off until set. Both options are privacy-friendly (no cookies, no banner needed):
    *   GoatCounter (free for personal sites): sign up at goatcounter.com → analytics: { goatcounter: 'your-code' }
    *   Plausible (paid):                                                  analytics: { plausible: 'kahariel.github.io' }
-   * Besides page views it records: which sections visitors reach, tour starts, email / link copies,
-   * résumé downloads and clicks on live project links.
+   * Besides page views it records: which sections visitors reach, email / link copies,
+   * résumé downloads, screenshot zooms and clicks on live project links.
    */
   analytics: { goatcounter: 'parziv4l' },
-
-  /*
-   * Guided tour. `at` is a section (index, experience, stack, about, work, contact)
-   * or a project as work/<slug> — the slug is the project name in lowercase-with-dashes.
-   * The same values work as shareable links: yoursite.com/#work/syncro
-   */
-  tour: [
-    { at: 'index', title: 'Karl Daven Talib', text: 'Full-stack developer focused on AI, automation and integrations. This site is a map — the tour drives, or drag anywhere to explore on your own.' },
-    { at: 'experience', title: 'Experience', text: 'CTO at Syncro, full-stack at SMB Solutions, and freelance since 2023. The cards can be dragged around the desk.' },
-    { at: 'work/syncro', title: 'Dental Clinic Management Platform', text: 'Syncro — in production at 11 clinics — automated per-clinic delivery, AI booking, and an AI voice receptionist in development.' },
-    { at: 'work/syncro-hub', title: 'SaaS Control Plane for Syncro', text: 'Syncro Hub — the internal platform behind Syncro: plans and subscriptions, revenue and usage analytics, and one-click setup of a new clinic, from DNS to SSL.' },
-    { at: 'work/one-shot-imaging', title: 'Imaging Clinic Operations System', text: 'One Shot Imaging — real-time handoff between the front desk and the imaging room. Live since October 2026; multi-tenant version in development.' },
-    { at: 'work', title: 'Selected work', text: 'Eight projects — healthcare platforms and the SaaS control plane behind them, a CRM, a mobile app and its admin console, e-commerce and a kiosk system. Each card lists the technical details.' },
-    { at: 'stack', title: 'Stack', text: 'Every tool, grouped by domain and linked to the projects that used it. Select any node to inspect it.' },
-    { at: 'contact', title: 'Get in touch', text: 'Copy the email or download the résumé from the top-right bar — it stays on screen wherever you are on the map.' },
-  ],
 
   skills: {
     'AI & Automation': ['OpenAI API', 'LiveKit Agents', 'Deepgram', 'LLM Tool Calling', 'Dialogflow', 'AI-Assisted Development', 'Lovable', 'Workflow Automation', 'GitHub Actions'],

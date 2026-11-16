@@ -24,31 +24,13 @@ window.U = {
     return e;
   },
 
-  // A canvas covering a zone. Its backing store matches how big the zone is on
-  // screen (zoom × devicePixelRatio) instead of its full world size, and is
-  // re-sized shortly after the camera stops zooming. Drawing code keeps using
-  // world units; onResize lets the caller redraw after the canvas is cleared.
-  // `snap` (optional): a world-unit grid spacing that should land on whole canvas
-  // pixels, so evenly spaced dots stay evenly spaced on screen.
-  zoneCanvas(zone, { maxScale = 1.5, onResize, snap } = {}) {
-    const cv = document.createElement('canvas'), ctx = cv.getContext('2d');
-    cv.style.width = zone.w + 'px';
-    cv.style.height = zone.h + 'px';
-    let scale = 0, timer;
-    const fit = () => {
-      let want = U.clamp(Plane.cam.s * (devicePixelRatio || 1), .25, maxScale);
-      if (snap) want = Math.max(1, Math.round(want * snap)) / snap;
-      if (scale && Math.abs(want - scale) / scale < .2) return; // close enough, skip the realloc
-      scale = want;
-      cv.width = Math.round(zone.w * scale);
-      cv.height = Math.round(zone.h * scale);
-      ctx.setTransform(scale, 0, 0, scale, 0, 0);
-      if (onResize) onResize();
-    };
-    fit();
-    Plane.onChange(() => { clearTimeout(timer); timer = setTimeout(fit, 150); });
-    zone.el.prepend(cv);
-    return { cv, ctx };
+  // Brand icon for a technology name (see js/icons.js), or '' if there isn't one.
+  icon(name) {
+    const I = window.ICONS, slug = I && I.names[name], ic = slug && I.paths[slug];
+    if (!ic) return '';
+    if (ic.img) return `<img class="ico${ic.invert ? ' invert' : ''}" src="${ic.img}" alt="">`;
+    if (ic.svg) return `<svg class="ico" viewBox="${ic.box}" aria-hidden="true">${ic.svg}</svg>`;
+    return `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"${ic[0] ? ` style="--c:${ic[0]}"` : ''}><path d="${ic[1]}"/></svg>`;
   },
 
   slug: s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
@@ -67,7 +49,5 @@ window.U = {
 
   track: () => {}, // replaced by js/analytics.js
 
-  clamp: (v, a, b) => Math.max(a, Math.min(b, v)),
-  rand: (a, b) => a + Math.random() * (b - a),
   reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches,
 };

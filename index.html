@@ -7,18 +7,20 @@
 <meta name="description" content="Karl Daven Talib — full-stack developer focused on AI, automation and integrations. Healthcare platforms, CRM and business systems. Davao City, PH.">
 <link rel="canonical" href="https://kahariel.github.io/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#f2f1ed">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3f4f5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121416" media="(prefers-color-scheme: dark)">
 
 <!-- link previews (LinkedIn, Messenger, Slack, X…) -->
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Karl Daven Talib">
 <meta property="og:title" content="Karl Daven Talib — Full-Stack Developer">
-<meta property="og:description" content="AI, automation & integrations. Healthcare platforms in production at 11 clinics, an AI voice receptionist, workflow automation, CRM and mobile. Explore the portfolio map.">
+<meta property="og:description" content="AI, automation & integrations. Healthcare platforms in production at 11 clinics, an AI voice receptionist, workflow automation, CRM and mobile.">
 <meta property="og:url" content="https://kahariel.github.io/">
 <meta property="og:image" content="https://kahariel.github.io/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Karl Daven Talib — the name drawn in dots, with the role Full-Stack Developer, AI, Automation & Integrations">
+<meta property="og:image:alt" content="Karl Daven Talib — Full-Stack Developer, AI, Automation & Integrations. Davao City, Philippines.">
 <meta property="profile:first_name" content="Karl Daven">
 <meta property="profile:last_name" content="Talib">
 <meta name="twitter:card" content="summary_large_image">
@@ -43,61 +45,78 @@
   "knowsAbout": ["AI voice agents", "LLM tool calling", "OpenAI API", "Workflow automation", "System design", "Multi-tenant architecture", "Laravel", "PHP", "Python", "Next.js", "React", "React Native", "Supabase", "MySQL", "PostgreSQL", "REST APIs", "Webhooks", "GitHub Actions", "Docker", "Linux"]
 }
 </script>
-<!-- fonts are self-hosted and deliberately NOT preloaded: on slow 4G, preloads delayed first
-     paint by ~190 ms; without them first paint matches Google Fonts and full load is faster -->
+<!-- the font (Manrope) is self-hosted and deliberately not preloaded: on slow connections a preload delays first paint -->
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body id="top">
 
-<a class="skip-link" href="#plain">Skip to the list view</a>
+<a class="skip-link" href="#work">Skip to the work</a>
 
-<main id="viewport" aria-label="Portfolio map — drag to move, or use Tab to step through the content">
-  <div id="world"></div>
+<header id="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" id="brand"></a>
+    <nav id="nav" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#stack">Stack</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn solid small" id="bar-resume" href="#contact">Résumé ↓</a>
+  </div>
+</header>
+
+<main>
+  <section id="hero" class="wrap" aria-label="Introduction"></section>
+
+  <section id="work" class="band">
+    <div class="wrap">
+      <header class="head"><h2>Selected work</h2><p class="eyebrow" id="work-note"></p></header>
+      <div id="work-featured"></div>
+      <div id="work-grid"></div>
+    </div>
+  </section>
+
+  <section id="experience" class="band">
+    <div class="wrap">
+      <header class="head"><h2>Experience</h2></header>
+      <div id="experience-list"></div>
+    </div>
+  </section>
+
+  <section id="stack" class="band">
+    <div class="wrap">
+      <header class="head"><h2>Stack</h2><p class="eyebrow" id="stack-note"></p></header>
+      <div id="stack-list"></div>
+    </div>
+  </section>
+
+  <section id="about" class="band">
+    <div class="wrap">
+      <header class="head"><h2>About</h2></header>
+      <div id="about-body"></div>
+    </div>
+  </section>
 </main>
 
-<!-- HUD: things pinned to the screen, not the map -->
-<div id="coords" class="hud" aria-hidden="true"></div>
-<nav id="compass" class="hud" aria-label="Jump to"></nav>
-<div id="help" class="hud" aria-hidden="true">Drag to move · Scroll or pinch to zoom · Arrow keys · <kbd>0</kbd> Index</div>
-<canvas id="minimap" class="hud" width="200" height="146" aria-hidden="true"></canvas>
-<nav id="actions" class="hud" aria-label="Quick actions">
-  <button id="tour-start" type="button">Tour</button>
-  <a id="resume-btn" href="#" download><span class="l">Résumé ↓</span><span class="s">CV ↓</span></a>
-  <button id="copy-email" type="button"><span class="l">Copy email</span><span class="s">Email</span></button>
-  <button id="plain-toggle" type="button"><span class="l">List view</span><span class="s">List</span></button>
-</nav>
+<footer id="contact">
+  <div class="wrap" id="contact-body"></div>
+</footer>
 
-<!-- Guided tour: the panel that narrates each stop -->
-<section id="tour" class="hud" hidden aria-live="polite" aria-label="Guided tour">
-  <header><span class="tour-step"></span><button class="tour-close" type="button" aria-label="End tour">×</button></header>
-  <h2 class="tour-title"></h2>
-  <p class="tour-text"></p>
-  <div class="tour-bar"><i></i></div>
-  <footer>
-    <button class="tour-back" type="button">Back</button>
-    <button class="tour-pause" type="button">Pause</button>
-    <button class="tour-next" type="button">Next</button>
-  </footer>
-</section>
+<dialog id="lightbox" aria-label="Screenshot">
+  <img alt="">
+  <button type="button" class="close" aria-label="Close">Close ×</button>
+</dialog>
 
-<!-- First-visit prompt -->
-<aside id="welcome" class="hud" hidden aria-label="Tour invitation">
-  <p>New here? A short tour shows the highlights in under a minute.</p>
-  <div><button class="welcome-start" type="button">Start tour</button><button class="welcome-skip" type="button">Explore on my own</button></div>
-</aside>
-
-<div id="toast" class="hud" role="status" aria-live="polite"></div>
-
-<!-- Linear, accessible version of the same content -->
-<section id="plain" hidden aria-label="List view" tabindex="-1"></section>
+<div id="toast" role="status" aria-live="polite"></div>
 
 <noscript>
-  <article style="max-width:720px;margin:0 auto;padding:48px 20px;font-family:system-ui,sans-serif;line-height:1.6;position:relative;z-index:200;background:#faf9f6">
+  <article style="max-width:720px;margin:0 auto;padding:48px 20px;font-family:system-ui,sans-serif;line-height:1.6">
     <h1>Karl Daven P. Talib</h1>
     <p>Full-Stack Developer — AI, Automation &amp; Integrations · Davao City, Philippines</p>
-    <p><a href="mailto:pioloulo123@gmail.com">pioloulo123@gmail.com</a> · +63 991 844 4532</p>
-    <p>This portfolio is an interactive map and needs JavaScript. Selected work: dental clinic management platform (Syncro — 11 clinics, AI voice receptionist in development),
+    <p><a href="mailto:pioloulo123@gmail.com">pioloulo123@gmail.com</a> · +63 991 844 4532 · <a href="assets/Karl-Daven-Talib-CV.pdf">Résumé (PDF)</a></p>
+    <p>The full portfolio needs JavaScript. Selected work: dental clinic management platform (Syncro — 11 clinics, AI voice receptionist in development),
       Syncro Hub (the SaaS control plane behind it: subscriptions, analytics, one-click clinic provisioning),
       imaging clinic operations system (One Shot Imaging), CRM with workflow automation (SMB Solutions), blood donation mobile app and
       admin dashboard (BloodSeek), streetwear e-commerce store (KLNW), library attendance kiosk (PiStamp).</p>
@@ -105,16 +124,9 @@
 </noscript>
 
 <script src="js/content.js"></script>
+<script src="js/icons.js"></script>
 <script src="js/util.js"></script>
 <script src="js/analytics.js"></script>
-<script src="js/plane.js"></script>
-<script src="js/erosion.js"></script>
-<script src="js/scraps.js"></script>
-<script src="js/signal.js"></script>
-<script src="js/zones.js"></script>
-<script src="js/plain.js"></script>
-<script src="js/nav.js"></script>
-<script src="js/tour.js"></script>
-<script src="js/main.js"></script>
+<script src="js/site.js"></script>
 </body>
 </html>

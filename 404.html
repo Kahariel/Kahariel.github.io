@@ -3,34 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Off the map — Karl Daven Talib</title>
+<title>Page not found — Karl Daven Talib</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/css/fonts.css">
 <style>
-  :root { --ground: #f2f1ed; --ink: #141519; --muted: #6b6d72; --accent: #d4471f; }
+  :root { --bg: #f3f4f5; --ink: #1b1f23; --text: #4a5158; --muted: #6b727a; --accent: #0f7b5a; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #121416; --ink: #f1f3f4; --text: #b4bac0; --muted: #8a9198; --accent: #45c79b; } }
   * { box-sizing: border-box; margin: 0; }
-  body {
-    min-height: 100vh; display: grid; place-items: center; padding: 24px; background: var(--ground); color: var(--ink);
-    font-family: 'JetBrains Mono', monospace;
-    background-image: linear-gradient(rgba(20,21,25,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(20,21,25,.045) 1px, transparent 1px);
-    background-size: 100px 100px;
-  }
+  body { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: var(--bg); color: var(--text); font-family: 'Manrope', system-ui, sans-serif; }
   main { max-width: 560px; }
-  .eyebrow { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
-  .eyebrow b { color: #bf401c; font-weight: 400; }
-  h1 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(56px, 12vw, 120px); line-height: .9; margin: 14px 0 20px; }
-  p { font-size: 14px; line-height: 1.7; color: #34363b; }
-  a { display: inline-block; margin-top: 24px; background: var(--ink); color: var(--ground); padding: 10px 16px; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .eyebrow b { color: var(--accent); }
+  h1 { font-weight: 800; font-size: clamp(52px, 11vw, 104px); line-height: .95; letter-spacing: -.055em; color: var(--ink); margin: 14px 0 20px; }
+  p { font-size: 16px; line-height: 1.65; }
+  a { display: inline-block; margin-top: 26px; background: var(--ink); color: var(--bg); padding: 13px 22px; border-radius: 999px; font-size: 14.5px; font-weight: 600; text-decoration: none; }
   a:hover { background: var(--accent); }
 </style>
 </head>
 <body>
 <main>
-  <div class="eyebrow"><b>404</b> · Off the map</div>
+  <div class="eyebrow"><b>404</b> · Page not found</div>
   <h1>Nothing here.</h1>
-  <p>This page doesn't exist. Sections of the portfolio live on one map — links look like <code>/#work</code> or <code>/#work/syncro</code>.</p>
-  <a href="/">Back to the map</a>
+  <p>This page doesn't exist. The portfolio is a single page — links look like <code>/#work</code> or <code>/#work/syncro</code>.</p>
+  <a href="/">Back to the portfolio</a>
 </main>
 </body>
 </html>
